@@ -1,0 +1,124 @@
+
+antgame.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+menu-bg
+  rotate: false
+  xy: 1, 591
+  size: 512, 384
+  orig: 512, 384
+  offset: 0, 0
+  index: -1
+splash
+  rotate: false
+  xy: 1, 205
+  size: 512, 384
+  orig: 512, 384
+  offset: 0, 0
+  index: -1
+logo
+  rotate: false
+  xy: 515, 865
+  size: 482, 110
+  orig: 482, 110
+  offset: 0, 0
+  index: -1
+menu-exit-down
+  rotate: false
+  xy: 1, 137
+  size: 462, 66
+  orig: 462, 66
+  offset: 0, 0
+  index: -1
+menu-exit-up
+  rotate: false
+  xy: 515, 797
+  size: 462, 66
+  orig: 462, 66
+  offset: 0, 0
+  index: -1
+menu-help-down
+  rotate: false
+  xy: 1, 69
+  size: 462, 66
+  orig: 462, 66
+  offset: 0, 0
+  index: -1
+menu-help-up
+  rotate: false
+  xy: 515, 729
+  size: 462, 66
+  orig: 462, 66
+  offset: 0, 0
+  index: -1
+menu-tournament-game-down
+  rotate: false
+  xy: 1, 1
+  size: 462, 66
+  orig: 462, 66
+  offset: 0, 0
+  index: -1
+menu-tournament-game-up
+  rotate: false
+  xy: 515, 661
+  size: 462, 66
+  orig: 462, 66
+  offset: 0, 0
+  index: -1
+menu-two-player-game-down
+  rotate: false
+  xy: 515, 593
+  size: 462, 66
+  orig: 462, 66
+  offset: 0, 0
+  index: -1
+menu-two-player-game-up
+  rotate: false
+  xy: 515, 525
+  size: 462, 66
+  orig: 462, 66
+  offset: 0, 0
+  index: -1
+back-down
+  rotate: false
+  xy: 515, 452
+  size: 180, 71
+  orig: 180, 71
+  offset: 0, 0
+  index: -1
+back-up
+  rotate: false
+  xy: 515, 379
+  size: 180, 71
+  orig: 180, 71
+  offset: 0, 0
+  index: -1
+black-ant-hill
+  rotate: false
+  xy: 697, 459
+  size: 55, 64
+  orig: 55, 64
+  offset: 0, 0
+  index: -1
+clear-cell
+  rotate: false
+  xy: 515, 313
+  size: 55, 64
+  orig: 55, 64
+  offset: 0, 0
+  index: -1
+red-ant-hill
+  rotate: false
+  xy: 697, 393
+  size: 55, 64
+  orig: 55, 64
+  offset: 0, 0
+  index: -1
+rocky-cell
+  rotate: false
+  xy: 754, 459
+  size: 55, 64
+  orig: 55, 64
+  offset: 0, 0
+  index: -1
