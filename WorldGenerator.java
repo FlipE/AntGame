@@ -1,3 +1,8 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * World Generator. Prints a 2D array of characters that represents an ant world.
  * 
@@ -15,31 +20,34 @@
  */
 public class WorldGenerator 
 {
-  private char[][] world;
+	private char[][] world;
 	private int numOfRocks;
 	private int numOfFoodBlobs;
 	private boolean[][] tilesOccupied;
+	private File worldFile;
 	
 	public WorldGenerator(int rocks, int foodBlobs)
 	{
 		numOfRocks = rocks;
 		numOfFoodBlobs = foodBlobs;
+		generateWorld();
+		try {
+			worldFile = createWorldFile(getWorldData());
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void main(String[] args)
 	{
 		WorldGenerator wg = new WorldGenerator(14, 11);
-		wg.generateWorld();
 	}
 	
 	public char[][] generateWorld()
 	{
 		world = new char[150][150];
 		tilesOccupied = new boolean[150][150];
-		
-		//Set world dimensions
-		System.out.println("150");
-		System.out.println("150");
 		
 		//loop through world, set border tiles to '#' and every other tile to '.'
 		for(int i=0; i<150; i++){
@@ -63,7 +71,6 @@ public class WorldGenerator
 		generateAnthill('-'); //Generate Black Anthill
 		generateAnthill('+'); //Generate Red Anthill
 		
-		printWorld();
 		return world;
 	}
 	
@@ -263,19 +270,49 @@ public class WorldGenerator
 		tilesOccupied[x+1][y+1] = true;
 	}
 	
-	public void printWorld()
+	public String getWorldData()
 	{
+		String worldData = "";
+		
+		//Set world dimensions
+		//System.out.println("150");
+		//System.out.println("150");
+		worldData += "150\n";
+		worldData += "150\n";
+		
 		for(int i=0; i<150; i++){
 			for(int j=0; j<150; j++){
-				System.out.print(world[i][j] + " ");
-				
+				//System.out.print(world[i][j] + " ");
+				worldData += world[i][j] + " ";
 			}
-			System.out.print(i);
-			System.out.println();
+			//System.out.println();
+			worldData += "\n";
 			if(i % 2 == 0){
-				System.out.print(" ");
+				//System.out.print(" ");
+				worldData += " ";
 			}
 		}
+		
+		return worldData;
+	}
+	
+	public File createWorldFile(String worldData) throws IOException
+	{
+		File f;
+		f = new File("AntWorld.world");
+		if(!f.exists()){
+			f.createNewFile();
+		}
+		
+		BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+        writer.write(worldData);
+        writer.close();
+		return f;
+	}
+	
+	public File getWorld()
+	{
+		return worldFile;
 	}
 }
 
