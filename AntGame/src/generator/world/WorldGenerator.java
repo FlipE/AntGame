@@ -1,4 +1,4 @@
-package parsers.world;
+package generator.world;
 
 import java.io.BufferedWriter;
 import java.io.File;

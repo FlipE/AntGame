@@ -1,26 +1,30 @@
-package parsers.world;
+package tests;
 
 import static org.junit.Assert.*;
 
+
+import generator.world.WorldGenerator;
 
 import java.io.File;
 
 import org.junit.Ignore;
 import org.junit.Test;
 
+import parsers.world.WorldParser;
+
 
 
 public class ParserTesting {
 
-//	@Test
-//	public void testLotsofWorlds() throws Exception {
-//		for (int i = 0; i<100;i++){
-//			System.out.println("Test number "+ i);
-//			WorldGenerator wg = new WorldGenerator(14,11);
-//			File world = wg.getWorld();
-//			assertTrue(parsers.world.WorldParser.Parse(world)!= null);
-//		}
-//	}
+	@Ignore	//takes 1 min to run
+	public void testLotsofWorlds() throws Exception {
+		for (int i = 0; i<100;i++){
+			System.out.println("Test number "+ i);
+			WorldGenerator wg = new WorldGenerator(14,11);
+			File world = wg.getWorld();
+			assertTrue(parsers.world.WorldParser.Parse(world)!= null);
+		}
+	}
 	@Test (expected = Exception.class)//world generator can make wrong number of rocks if the same position is randomly chosen twice
 	public void testBrokenWorld() throws Exception{
 		File f = new File ("brokenWorlds/AntWorld.World"); 
