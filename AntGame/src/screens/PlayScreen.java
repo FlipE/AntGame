@@ -12,7 +12,7 @@ import cells.Cell;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 
-import exceptions.InvalidInputException;
+import exceptions.SyntacticallyInvalidInputException;
 import fileio.AntBrainLoader;
 import fileio.SimpleWorldLoader;
 
@@ -45,7 +45,7 @@ public class PlayScreen extends AbstractScreen {
 		
 		AntBrain redBrain = null;
 		AntBrain blackBrain = null;
-		
+		/*
 		try {
 			redBrain = AntBrainLoader.load("C:/University/Dropbox/Git2/AntGame/AntGame-android/assets/brains/horseshoe.brain");
 			blackBrain = AntBrainLoader.load("C:/University/Dropbox/Git2/AntGame/AntGame-android/assets/brains/cleverbrain1.brain");
@@ -61,7 +61,7 @@ public class PlayScreen extends AbstractScreen {
 		// initialise gui
 		worldView = new AntWorldTextView(world, stage);
 		
-		// initialise controller
+		// initialise controller*/
 		
 	}
 	

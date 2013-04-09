@@ -32,10 +32,10 @@ import controllers.HelpScreenController;
  */
 public class HelpScreen extends AbstractScreen {
 
-	Image backgroundImage;
-	Image logoImage;
-	Table root;
-	Button backButton;
+	private Image backgroundImage;
+	private Image logoImage;
+	private Table root;
+	private Button backButton;
 	
 	/**
 	 * @param game
@@ -76,7 +76,7 @@ public class HelpScreen extends AbstractScreen {
 				
 		// create a top section for the logo the cell added is aligned bottom and has 100 padding top
 		Table top = new Table(skin);
-		root.add(top).height(logoRegion.getRegionHeight()).padTop(100).colspan(2);
+		root.add(top).height(logoRegion.getRegionHeight()).padTop(75).colspan(2);
 		root.row();
 				
 		// add the background image actor to the stage

@@ -33,4 +33,17 @@ public class Config {
 	public static final int SENSE_HOME = 7;
 	public static final int SENSE_FOEHOME = 8;
 	// note, sense marker has been split out into a seperate function
+	
+	// file paths
+	public static String currentBrainPath = System.getProperty("user.dir");
+	public static String currentWorldPath = System.getProperty("user.dir");	
+	
+	// Brain file description and extension
+	public static final String BRAIN_FILE_DESCRIPTION = "Ant Brain Files";
+	public static final String BRAIN_FILE_EXTENSION = "brain";
+	
+	// World file description and extension
+	public static final String WORLD_FILE_DESCRIPTION = "Ant World Files";
+	public static final String WORLD_FILE_EXTENSION = "world";
+	
 }

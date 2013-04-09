@@ -19,9 +19,9 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
  */
 public class HelpScreenController extends InputListener {
 
-	Actor actor;
-	String actorName;
-	AntGame game;
+	private Actor actor;
+	private String actorName;
+	private AntGame game;
 		
 	/**
 	 * @param game

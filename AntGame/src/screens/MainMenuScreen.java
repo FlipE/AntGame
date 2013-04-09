@@ -4,8 +4,8 @@
 package screens;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeIn;
-import widgets.Menu;
-import widgets.MenuItem;
+import views.widgets.Menu;
+import views.widgets.MenuItem;
 import antgame.AntGame;
 import antgame.Assets;
 import antgame.Config;
@@ -74,7 +74,7 @@ public class MainMenuScreen extends AbstractScreen {
 		
 		// create a top section for the logo the cell added is aligned bottom and has 100 padding top
 		Table top = new Table(skin);
-		root.add(top).height(logoRegion.getRegionHeight()).padTop(100);
+		root.add(top).height(logoRegion.getRegionHeight()).padTop(75);
 		root.row();
 		
 		// add the background image actor to the stage

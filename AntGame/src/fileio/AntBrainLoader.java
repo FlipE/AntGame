@@ -8,14 +8,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import listeners.AntBrainLoaderListener;
 import parsers.brain.BrainParser;
 import parsers.brain.Lexer;
 import parsers.brain.Token;
 import ai.AntBrain;
-import exceptions.InvalidInputException;
+import exceptions.LexicallyInvalidInputException;
+import exceptions.SyntacticallyInvalidInputException;
 
 /**
  * AntBrainLoader.java
@@ -23,16 +26,24 @@ import exceptions.InvalidInputException;
  * @date 29 Mar 2013
  * @version 1.0
  */
-public class AntBrainLoader {
-
+public class AntBrainLoader implements Runnable {
+	
+	private List<AntBrainLoaderListener> listeners;
+	private String filepath;
+	
+	public AntBrainLoader(String filepath) {
+		this.filepath = filepath;
+		this.listeners = new ArrayList<AntBrainLoaderListener>();
+	}
+	
 	/**
 	 * Given the path to a brain file
 	 * 
 	 * @param filepath
 	 * @return
-	 * @throws InvalidInputException
+	 * @throws SyntacticallyInvalidInputException
 	 */
-	public static AntBrain load(String filepath) throws InvalidInputException {
+	public AntBrain load(String filepath) throws SyntacticallyInvalidInputException {
 		List<Token> tokens = new LinkedList<Token>();
 		AntBrain brain = null;
 		
@@ -47,9 +58,7 @@ public class AntBrainLoader {
 			Lexer lexer = new Lexer(reader);
 
 			try {
-				
-				System.out.println("lexing");
-				
+								
 				// lexing
 				while (!lexer.finished()) {
 					Token t = lexer.yylex();
@@ -60,46 +69,77 @@ public class AntBrainLoader {
 				
 				// close the input stream				
 				lexer.yyclose();
-				
-				System.out.println("parsing");
-				
+								
 				// parsing
 				BrainParser parser = new BrainParser();
 				try {
 					brain = parser.check(tokens);
 					//System.out.println(brain);
 				}
-				catch (InvalidInputException e) {
-					e.printStackTrace();
-					throw new InvalidInputException("The input is not syntactically valid.");
+				catch (SyntacticallyInvalidInputException e) {
+					throw new SyntacticallyInvalidInputException("The input is not syntactically valid.");
 				}
-
 			}
-			catch (InvalidInputException e) {
+			catch (LexicallyInvalidInputException e) {
 				// close stream here to avoid resource leak when exception is caught
 				lexer.yyclose();
 				
 				// This happens when the input is not in the language
-				throw new InvalidInputException("The input is not lexically valid.");
+				throw new SyntacticallyInvalidInputException("The input is not lexically valid.");
 			}
 			catch (IOException e) {
 				// close stream here to avoid resource leak when exception is caught
 				lexer.yyclose();
 				
 				// the file cannot be read
-				throw new InvalidInputException("The file cannot be read.");
+				throw new SyntacticallyInvalidInputException("The file cannot be read.");
 			}
 		}
-		catch (Exception e) {
+		catch (IOException e) {
 			// this can happen if:
 			//  - The file is not found
 			//  - The character encoding is not supported
 			//  - There is an IO error
-			throw new InvalidInputException("The file cannot be read.");
+			throw new SyntacticallyInvalidInputException("The file cannot be read.");
 		}
 		
 		// success. return the constructed brain
 		return brain;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
+	@Override
+	public void run() {
+		
+		try {
+			AntBrain brain = this.load(this.filepath);
+			this.notifyBrainLoadComplete(brain);
+		}
+		catch(SyntacticallyInvalidInputException e) {
+			this.notifyBrainLoadFailed(e.getMessage());
+		}		
+	}
+	
+	private void notifyBrainLoadFailed(String message) {
+		for(AntBrainLoaderListener l : this.listeners) {
+			l.brainLoadFailed(message);
+		}
+	}
+
+	private void notifyBrainLoadComplete(AntBrain brain) {
+		for(AntBrainLoaderListener l : this.listeners) {
+			l.brainLoadComplete(brain);
+		}
+	}
+	
+	public void addListener(AntBrainLoaderListener l) {
+		this.listeners.add(l);
+	}
+	
+	public void removeListener(AntBrainLoaderListener l) {
+		this.listeners.remove(l);
 	}
 
 }

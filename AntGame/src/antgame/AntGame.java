@@ -1,5 +1,8 @@
 package antgame;
 
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 import screens.HelpScreen;
 import screens.MainMenuScreen;
 import screens.PlayScreen;
@@ -24,10 +27,28 @@ public class AntGame extends Game {
 	@Override
 	public void create() {
 		
+		// set look and feel used by the Swing file chooser
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		}
+		catch(Exception e) {
+			// don't care about this not working
+		}
+		/*
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}*/
+		
 		// load the assets
 		Assets.load();
 		
-		// screate all the screens
+		// create all the screens
 		this.splashScreen = new SplashScreen(this);
 		this.mainMenuScreen = new MainMenuScreen(this);
 		this.twoPlayerMenuScreen = new TwoPlayerMenuScreen(this);

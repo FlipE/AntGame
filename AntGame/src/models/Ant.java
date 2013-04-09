@@ -70,7 +70,8 @@ public class Ant implements Model {
 			e.printStackTrace();
 		}
 		catch (ReceiverNotSetException e) {
-			// log this, it should never happen because we have set the receiver
+			// log this, it should never happen because we have set the receiver. But if
+			// the command implementation is wrong then it will break here.
 			e.printStackTrace();
 		}
 	}
@@ -86,7 +87,7 @@ public class Ant implements Model {
 	public int sense(int senseDirection, int trueState, int falseState, int condition) {
 		
 		// get the location to sense
-		Position p = this.parsesenseDirection(senseDirection);
+		Position p = this.parseSenseDirection(senseDirection);
 		int x = p.getX();
 		int y = p.getY();
 		
@@ -149,7 +150,7 @@ public class Ant implements Model {
 	 */
 	public int senseMark(int senseDirection, int trueState, int falseState, int type) {
 		
-		Position p = this.parsesenseDirection(senseDirection);
+		Position p = this.parseSenseDirection(senseDirection);
 		
 		// check the marker type in the cell for this ant's color
 		if(this.world.senseMarker(p.getX(), p.getY(), type, this.color)) {
@@ -164,7 +165,7 @@ public class Ant implements Model {
 	 * @param senseDirection
 	 * @return
 	 */
-	private Position parsesenseDirection(int senseDirection) {
+	private Position parseSenseDirection(int senseDirection) {
 		Position p = new Position();
 		
 		// get the location to sense

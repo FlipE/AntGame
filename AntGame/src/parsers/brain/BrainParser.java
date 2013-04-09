@@ -14,11 +14,11 @@ import ai.commands.SenseMark;
 import ai.commands.Turn;
 import ai.commands.Unmark;
 import antgame.Config;
-import exceptions.InvalidInputException;
+import exceptions.SyntacticallyInvalidInputException;
 
 public class BrainParser {
 
-	public AntBrain check(List<Token> list) throws InvalidInputException {
+	public AntBrain check(List<Token> list) throws SyntacticallyInvalidInputException {
 		AntBrain brain = new AntBrain();
 		int i = 0;
 		while (i < list.size()) {
@@ -106,9 +106,9 @@ public class BrainParser {
 	 * @param falseState a token representing the transition if the condition does not hold
 	 * @param type the type of mark to look for
 	 * @return
-	 * @throws InvalidInputException
+	 * @throws SyntacticallyInvalidInputException
 	 */
-	private AntCommand senseMark(Token direction, Token trueState, Token falseState, Token type) throws InvalidInputException {
+	private AntCommand senseMark(Token direction, Token trueState, Token falseState, Token type) throws SyntacticallyInvalidInputException {
 		return new SenseMark(this.parseSenseDirection(direction), this.parseState(trueState), this.parseState(falseState), this.parseMarkType(type));
 	}
 	
@@ -121,9 +121,9 @@ public class BrainParser {
 	 * @param falseState a token representing the transition if the condition does not hold
 	 * @param condition the condition to sense for
 	 * @return
-	 * @throws InvalidInputException
+	 * @throws SyntacticallyInvalidInputException
 	 */
-	private AntCommand sense(Token direction, Token trueState, Token falseState, Token condition) throws InvalidInputException {
+	private AntCommand sense(Token direction, Token trueState, Token falseState, Token condition) throws SyntacticallyInvalidInputException {
 		return new Sense(this.parseSenseDirection(direction), this.parseState(trueState), this.parseState(falseState), this.parseCondition(condition));
 	}
 
@@ -134,9 +134,9 @@ public class BrainParser {
 	 * @param type a token representing a mark type
 	 * @param nextState a token representing the next state
 	 * @return a new Unmark instance
-	 * @throws InvalidInputException
+	 * @throws SyntacticallyInvalidInputException
 	 */
-	private AntCommand unmark(Token type, Token nextState) throws InvalidInputException {
+	private AntCommand unmark(Token type, Token nextState) throws SyntacticallyInvalidInputException {
 		return new Unmark(this.parseMarkType(type), this.parseState(nextState));
 	}
 	
@@ -147,9 +147,9 @@ public class BrainParser {
 	 * @param type a token representing a mark type
 	 * @param nextState a token representing the next state
 	 * @return a new Mark instance
-	 * @throws InvalidInputException
+	 * @throws SyntacticallyInvalidInputException
 	 */
-	private AntCommand mark(Token type, Token nextState) throws InvalidInputException {
+	private AntCommand mark(Token type, Token nextState) throws SyntacticallyInvalidInputException {
 		return new Mark(this.parseMarkType(type), this.parseState(nextState));
 	}
 
@@ -160,9 +160,9 @@ public class BrainParser {
 	 * @param successState a token representing the transition on success
 	 * @param failState a token representing the transition on failure
 	 * @return a new PickUpFood instance
-	 * @throws InvalidInputException
+	 * @throws SyntacticallyInvalidInputException
 	 */
-	private AntCommand flip(Token num, Token zeroState, Token otherState) throws InvalidInputException {
+	private AntCommand flip(Token num, Token zeroState, Token otherState) throws SyntacticallyInvalidInputException {
 		return new Flip(this.parseNum(num), this.parseState(zeroState), this.parseState(otherState));
 	}
 
@@ -173,9 +173,9 @@ public class BrainParser {
 	 * @param successState a token representing the transition on success
 	 * @param failState a token representing the transition on failure
 	 * @return a new PickUpFood instance
-	 * @throws InvalidInputException
+	 * @throws SyntacticallyInvalidInputException
 	 */
-	private AntCommand pickup(Token successState, Token failState) throws InvalidInputException {
+	private AntCommand pickup(Token successState, Token failState) throws SyntacticallyInvalidInputException {
 		return new PickUpFood(this.parseState(successState), this.parseState(failState));
 	}
 	
@@ -186,9 +186,9 @@ public class BrainParser {
 	 * @param successState a token representing the transition on success
 	 * @param failState a token representing the transition on failure
 	 * @return a new Move instance
-	 * @throws InvalidInputException
+	 * @throws SyntacticallyInvalidInputException
 	 */
-	private AntCommand move(Token successState, Token failState) throws InvalidInputException {
+	private AntCommand move(Token successState, Token failState) throws SyntacticallyInvalidInputException {
 		return new Move(this.parseState(successState), this.parseState(failState));
 	}
 
@@ -199,9 +199,9 @@ public class BrainParser {
 	 * @param direction
 	 * @param nextState
 	 * @return
-	 * @throws InvalidInputException
+	 * @throws SyntacticallyInvalidInputException
 	 */
-	private AntCommand turn(Token direction, Token nextState) throws InvalidInputException {
+	private AntCommand turn(Token direction, Token nextState) throws SyntacticallyInvalidInputException {
 		return new Turn(this.parseTurnDirection(direction), this.parseState(nextState));
 	}
 
@@ -211,9 +211,9 @@ public class BrainParser {
 	 * 
 	 * @param nextState the argument for the DropFood ant command represents the next state the ant should transition to
 	 * @return a new DropFood instance
-	 * @throws InvalidInputException
+	 * @throws SyntacticallyInvalidInputException
 	 */
-	private AntCommand dropFood(Token nextState) throws InvalidInputException {
+	private AntCommand dropFood(Token nextState) throws SyntacticallyInvalidInputException {
 		return new DropFood(parseState(nextState));	
 	}
 
@@ -223,20 +223,20 @@ public class BrainParser {
 	 * 
 	 * @param s token representing a state
 	 * @return	an integer representation of the state
-	 * @throws InvalidInputException
+	 * @throws SyntacticallyInvalidInputException
 	 */
-	private int parseState(Token s) throws InvalidInputException {
+	private int parseState(Token s) throws SyntacticallyInvalidInputException {
 		try {
 			int state = Integer.parseInt(s.toString());
 			if (state >= 0 && state <= 9999) {
 				return state;
 			}
 			else {
-				throw new InvalidInputException("The next state must be 0 or more and less than 10,000. " + state + " is invalid.");
+				throw new SyntacticallyInvalidInputException("The next state must be 0 or more and less than 10,000. " + state + " is invalid.");
 			}
 		}
 		catch(NumberFormatException e) {
-			throw new InvalidInputException("The next state must be a number 0 or more and less than 10,000.");
+			throw new SyntacticallyInvalidInputException("The next state must be a number 0 or more and less than 10,000.");
 		}
 	}
 	
@@ -245,20 +245,20 @@ public class BrainParser {
 	 * 
 	 * @param t token representing a mark type
 	 * @return the int representation of the mark
-	 * @throws InvalidInputException
+	 * @throws SyntacticallyInvalidInputException
 	 */
-	private int parseMarkType(Token t) throws InvalidInputException {
+	private int parseMarkType(Token t) throws SyntacticallyInvalidInputException {
 		try {
 			int state = Integer.parseInt(t.toString());
 			if (state >= 0 && state <= 5) {
 				return state;
 			}
 			else {
-				throw new InvalidInputException("The mark type must be 0 or more and less than or equal to 5. " + state + " is invalid.");
+				throw new SyntacticallyInvalidInputException("The mark type must be 0 or more and less than or equal to 5. " + state + " is invalid.");
 			}
 		}
 		catch(NumberFormatException e) {
-			throw new InvalidInputException("The mark type must be 0 or more and less than or equal to 5.");
+			throw new SyntacticallyInvalidInputException("The mark type must be 0 or more and less than or equal to 5.");
 		}
 	}
 	
@@ -267,15 +267,15 @@ public class BrainParser {
 	 * 
 	 * @param number token representing a number
 	 * @return a number
-	 * @throws InvalidInputException
+	 * @throws SyntacticallyInvalidInputException
 	 */
-	private int parseNum(Token number) throws InvalidInputException {
+	private int parseNum(Token number) throws SyntacticallyInvalidInputException {
 		try {
 			int num = Integer.parseInt(number.toString());
 			return num;
 		}
 		catch(NumberFormatException e) {
-			throw new InvalidInputException("Must be a number.");
+			throw new SyntacticallyInvalidInputException("Must be a number.");
 		}
 	}
 	
@@ -285,9 +285,9 @@ public class BrainParser {
 	 * 
 	 * @param direction
 	 * @return the number representation of the direction
-	 * @throws InvalidInputException
+	 * @throws SyntacticallyInvalidInputException
 	 */
-	private int parseTurnDirection(Token direction) throws InvalidInputException {
+	private int parseTurnDirection(Token direction) throws SyntacticallyInvalidInputException {
 		String lr = direction.toString().toLowerCase();
 
 		if (lr.equals("left")) {
@@ -297,7 +297,7 @@ public class BrainParser {
 			return Config.TURN_RIGHT;
 		}
 		else {
-			throw new InvalidInputException("Direction must be left or right. " + lr + " is invalid.");
+			throw new SyntacticallyInvalidInputException("Direction must be left or right. " + lr + " is invalid.");
 		}
 	}
 	
@@ -313,9 +313,9 @@ public class BrainParser {
 	 * 
 	 * @param direction a token representing a direction to sense
 	 * @return the number representation of the direction
-	 * @throws InvalidInputException
+	 * @throws SyntacticallyInvalidInputException
 	 */
-	private int parseSenseDirection(Token direction) throws InvalidInputException {
+	private int parseSenseDirection(Token direction) throws SyntacticallyInvalidInputException {
 		String dir = direction.toString().toLowerCase();
 		if (dir.equals("here")) {
 			return Config.SENSE_HERE;
@@ -330,7 +330,7 @@ public class BrainParser {
 			return Config.SENSE_RIGHTAHEAD;
 		}
 		else {
-			throw new InvalidInputException("Direction must be here, ahead, leftahead or rightahead. " + dir + " is invalid.");
+			throw new SyntacticallyInvalidInputException("Direction must be here, ahead, leftahead or rightahead. " + dir + " is invalid.");
 		}
 	}
 	
@@ -351,9 +351,9 @@ public class BrainParser {
 	 * 
 	 * @param condition
 	 * @return
-	 * @throws InvalidInputException
+	 * @throws SyntacticallyInvalidInputException
 	 */
-	private int parseCondition(Token condition) throws InvalidInputException {
+	private int parseCondition(Token condition) throws SyntacticallyInvalidInputException {
 		String c = condition.toString().toLowerCase();
 		if (c.equals("friend")) {
 			return Config.SENSE_FRIEND;
@@ -383,7 +383,7 @@ public class BrainParser {
 			return Config.SENSE_HOME;
 		}
 		else {
-			throw new InvalidInputException("Unknown Condition: " + c);
+			throw new SyntacticallyInvalidInputException("Unknown Condition: " + c);
 		}
 	}
 }
