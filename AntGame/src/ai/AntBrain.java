@@ -10,7 +10,6 @@ import com.badlogic.gdx.utils.Array;
 /**
  * AntBrain.java
  *
- * @author 	Chris B
  * @date	22 Mar 2013
  * @version	1.0
  */

@@ -9,6 +9,6 @@ package listeners;
  */
 public interface WorldInfoListener {
 
-	public void updateWorld(String name);
+	public void updateWorldPath(String name, boolean isValid);
 	
 }

@@ -5,11 +5,13 @@ package screens;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeIn;
 import models.PlayerInfo;
+import models.WorldInfo;
 import views.widgets.PlayerInfoView;
 import views.widgets.WorldInfoView;
 import antgame.AntGame;
 import antgame.Assets;
 import antgame.Config;
+import antgame.MatchManager;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
@@ -36,20 +38,24 @@ import controllers.TwoPlayerMenuController;
 public class TwoPlayerMenuScreen extends AbstractScreen {
 
 	private Image backgroundImage;
-	private Image logoImage;
+	//private Image logoImage;
 	private Table root;
 	private Button backBtn;
 	private Button playBtn;
-	private Array<PlayerInfo> players;
-	private Array<PlayerInfoView> playerViews;
+	//private Array<PlayerInfo> players;
+	//private Array<WorldInfo> worlds;
+	private MatchManager matchManager;
+	private Array<PlayerInfoView> playerViews;	
+	private Array<WorldInfoView> worldViews;
 	
 	/**
 	 * @param game
 	 */
 	public TwoPlayerMenuScreen(AntGame game) {
 		super(game);
-		this.players = new Array<PlayerInfo>();
 		this.playerViews = new Array<PlayerInfoView>();
+		this.worldViews = new Array<WorldInfoView>();
+		this.matchManager = MatchManager.getInstance();
 		this.initialise();
 	}
 
@@ -70,16 +76,16 @@ public class TwoPlayerMenuScreen extends AbstractScreen {
 		stage.addActor(backgroundImage);
 
 		// create a table layout to add ui items to the stage
-		Skin skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+		Skin skin = Assets.skin;
 		root = new Table(skin);
 		root.setFillParent(true);
 
 		// load the logo
-		AtlasRegion logoRegion = Assets.textures.findRegion("logo");
-		Drawable logoDrawable = new TextureRegionDrawable(logoRegion);
+		//AtlasRegion logoRegion = Assets.textures.findRegion("logo");
+		//Drawable logoDrawable = new TextureRegionDrawable(logoRegion);
 
 		// here we create the background image actor; its size is set when the
-		logoImage = new Image(logoDrawable);
+		//logoImage = new Image(logoDrawable);
 
 		// create a top section for the logo the cell added is aligned bottom and has 100 padding top
 		//Table top = new Table(skin);
@@ -122,7 +128,7 @@ public class TwoPlayerMenuScreen extends AbstractScreen {
 		Drawable playUp = new TextureRegionDrawable(Assets.textures.findRegion("play-up"));
 		Drawable playDown = new TextureRegionDrawable(Assets.textures.findRegion("play-down"));
 		playBtn = new Button(playUp, playDown, playDown);
-		playBtn.setName(Config.BACK_TO_MENU);
+		playBtn.setName(Config.PLAY);
 		playBtn.addListener(controller);
 		root.add(playBtn).size(180, 71).colspan(2).right().padRight(230).padBottom(80);
 		
@@ -141,7 +147,8 @@ public class TwoPlayerMenuScreen extends AbstractScreen {
 		PlayerInfoView view = new PlayerInfoView(playerInfo);
 		
 		// add the info and view to the lists so we can keep track of what players are added
-		this.players.add(playerInfo);
+		//this.players.add(playerInfo);
+		this.matchManager.addPlayer(playerInfo);
 		this.playerViews.add(view);
 		
 		// return the view so it can be added to the screen content
@@ -149,7 +156,13 @@ public class TwoPlayerMenuScreen extends AbstractScreen {
 	}
 	
 	private WorldInfoView addWorld() {
-		WorldInfoView view = new WorldInfoView();
+		WorldInfo world = new WorldInfo();
+		WorldInfoView view = new WorldInfoView(world);
+		
+		this.matchManager.addWorld(world);
+		//this.worlds.add(world);
+		this.worldViews.add(view);
+		
 		return view;
 	}
 	

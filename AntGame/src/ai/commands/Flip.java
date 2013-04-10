@@ -8,7 +8,6 @@ import exceptions.ReceiverNotSetException;
 /**
  * Sense.java
  *
- * @author 	Chris B
  * @date	28 Mar 2013
  * @version	1.0
  */

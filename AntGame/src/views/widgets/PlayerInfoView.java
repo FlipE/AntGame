@@ -8,9 +8,7 @@ import models.PlayerInfo;
 import antgame.Assets;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -62,6 +60,7 @@ public class PlayerInfoView extends Table implements PlayerInfoListener {
 		// choose name
 		nameLbl = new Label("Name:", skin);
 		nameTxt = new TextField(playerInfo.getName(), skin);
+		nameTxt.setTextFieldListener(controller);
 
 		// choose brain
 		Drawable browseUp = new TextureRegionDrawable(Assets.textures.findRegion("browse-up"));
@@ -74,8 +73,7 @@ public class PlayerInfoView extends Table implements PlayerInfoListener {
 		
 		// form feedback
 		nameFeedback = new FormValidationFeedback();
-		nameFeedback.setValid();
-		
+		nameFeedback.setValid(true);
 		brainFeedback = new FormValidationFeedback();
 		
 		// table defaults and alignment
@@ -105,24 +103,23 @@ public class PlayerInfoView extends Table implements PlayerInfoListener {
 	
 	@Override
 	public void updateBrainPath(String path, boolean isValid) {
-		if(isValid) {
-			this.brainFeedback.setValid();
-		}
-		else {
-			this.brainFeedback.setInvalid();
-		}
+		this.brainFeedback.setValid(isValid);
 		this.brainTxt.setText(path);
 	}
 
 	@Override
 	public void updateName(String name, boolean isValid) {
-		if(isValid) {
-			this.nameFeedback.setValid();
-		}
-		else {
-			this.nameFeedback.setInvalid();
-		}
+		// update the form feedback widget to show whether the new name is valid
+		this.nameFeedback.setValid(isValid);
+		
+		// get the cursor position before setting the text
+		int cursorPosition = nameTxt.getCursorPosition();
+		
+		// set the new name in the text box, this resets the cursor position
 		this.nameTxt.setText(name);
+		
+		// set the cursor to its previous position 
+		this.nameTxt.setCursorPosition(cursorPosition);
 	}
 	
 	

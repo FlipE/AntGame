@@ -3,8 +3,8 @@
  */
 package views.widgets;
 
-import listeners.PlayerInfoListener;
-import models.PlayerInfo;
+import listeners.WorldInfoListener;
+import models.WorldInfo;
 import antgame.Assets;
 
 import com.badlogic.gdx.Gdx;
@@ -16,7 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
-import controllers.PlayerInfoController;
+import controllers.WorldInfoController;
 
 /**
  * AddPlayer.java
@@ -25,25 +25,30 @@ import controllers.PlayerInfoController;
  * @date	2 Apr 2013
  * @version	1.0
  */
-public class WorldInfoView extends Table {
+public class WorldInfoView extends Table implements WorldInfoListener {
 
+	private WorldInfo worldInfo;
 	private Label title;
 	private Label worldLbl;
 	private TextField worldTxt;
 	private Button browseBtn;
+	private FormValidationFeedback worldFeedback; 
 	
-	public WorldInfoView() {
+	public WorldInfoView(WorldInfo worldInfo) {
 		super();
+		this.worldInfo = worldInfo;
 		this.initialise();
 	}
 
 	private void initialise() {
 		
+		this.worldInfo.addListener(this);
+		
 		// load the skin
 		Skin skin = new Skin(Gdx.files.internal("data/uiskin.json"));
 		
 		// initialise the controller for the menu
-		//PlayerInfoController controller = new PlayerInfoController(this.playerInfo);
+		WorldInfoController controller = new WorldInfoController(this.worldInfo);
 		
 		// Title
 		title = new Label("World", skin);
@@ -53,9 +58,11 @@ public class WorldInfoView extends Table {
 		Drawable browseDown = new TextureRegionDrawable(Assets.textures.findRegion("browse-down"));
 		worldLbl = new Label("World:", skin);
 		worldTxt = new TextField("Not Set", skin);
-		//worldTxt.setDisabled(true);
 		browseBtn = new Button(browseUp, browseDown);
-		//browseBtn.addListener(controller);
+		browseBtn.addListener(controller);
+		
+		// loader feedback display
+		worldFeedback = new FormValidationFeedback();
 		
 		// table defaults and alignment
 		this.defaults().padRight(10).padBottom(3);
@@ -71,12 +78,14 @@ public class WorldInfoView extends Table {
 		// add world
 		this.add(worldLbl).right().padLeft(55);
 		this.add(worldTxt).left().expandX().prefWidth(300).padRight(5);
-		this.add(browseBtn).padRight(75);
+		this.add(browseBtn);
+		this.add(worldFeedback).padRight(34);
 		this.row();
 	}
-	
-	//@Override
-	public void updateWorldPath(String path) {
+
+	@Override
+	public void updateWorldPath(String path, boolean isValid) {
+		worldFeedback.setValid(isValid);
 		this.worldTxt.setText(path);
 	}
 }

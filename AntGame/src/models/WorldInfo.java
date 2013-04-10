@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import listeners.WorldInfoListener;
+import listeners.WorldLoaderListener;
 import cells.Cell;
-import fileio.AntBrainLoader;
+import fileio.WorldLoader;
 
 /**
  * WorldInfo.java
@@ -17,7 +18,7 @@ import fileio.AntBrainLoader;
  * @date	4 Apr 2013
  * @version	1.0
  */
-public class WorldInfo {
+public class WorldInfo implements WorldLoaderListener {
 
 	/** Cells which represent the world */
 	private Cell[][] world;
@@ -33,24 +34,16 @@ public class WorldInfo {
 		this.listeners = new ArrayList<WorldInfoListener>();
 	}
 	
-	public void setWorld(Cell[][] world) {
-		this.world = world;
-	}
-	
 	public Cell[][] getWorld() {
 		return this.world;
 	}
 	
 	public void loadWorld(String worldPath) {
-		// set the brain path to the new one given
+		// set the world path to the new one given
 		this.worldPath = worldPath;
 		
-		// set the brain state to validating
-		// update listeners with brain state
-		//this.notifyUpdateBrainPath("Validating...");
-		
-		// create a new brain loader thread
-		AntBrainLoader loader = new AntBrainLoader(brainPath);
+		// create a new world loader thread
+		WorldLoader loader = new WorldLoader(worldPath);
 		Thread t = new Thread(loader);
 		
 		// set this info as brain loader listener
@@ -66,5 +59,22 @@ public class WorldInfo {
 	
 	public void removeListener(WorldInfoListener l) {
 		this.listeners.remove(l);
+	}
+
+	@Override
+	public void worldLoadFailed(String message) {
+		this.notifyUpdateWorldPath(message, false);
+	}
+
+	@Override
+	public void worldLoadComplete(Cell[][] world) {
+		this.world = world;
+		this.notifyUpdateWorldPath(this.worldPath, true);
+	}
+	
+	private void notifyUpdateWorldPath(String message, boolean isValid) {
+		for(WorldInfoListener l : this.listeners) {
+			l.updateWorldPath(message, isValid);
+		}
 	}
 }

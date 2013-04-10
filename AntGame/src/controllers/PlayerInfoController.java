@@ -13,6 +13,8 @@ import antgame.Config;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 
 /**
  * MainMenuController.java
@@ -21,7 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
  * @date	26 Mar 2013
  * @version	1.0
  */
-public class PlayerInfoController extends InputListener {
+public class PlayerInfoController extends InputListener implements TextFieldListener {
 
 	private PlayerInfo playerInfo;
 	
@@ -57,5 +59,13 @@ public class PlayerInfoController extends InputListener {
 	    }
 		Config.currentBrainPath = chooser.getCurrentDirectory().getPath();
 		return file;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener#keyTyped(com.badlogic.gdx.scenes.scene2d.ui.TextField, char)
+	 */
+	@Override
+	public void keyTyped(TextField textField, char key) {
+		playerInfo.setName(textField.getText());
 	}
 }

@@ -56,8 +56,8 @@ public class AntGame extends Game {
 		this.playScreen = new PlayScreen(this);
 				
 		// start off on the splash screen
-		this.setScreen(this.splashScreen);
-		//this.setScreen(this.mainMenuScreen);
+		//this.setScreen(this.splashScreen);
+		this.setScreen(this.mainMenuScreen);
 		//this.setScreen(this.playScreen);
 	}
 

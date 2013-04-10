@@ -8,7 +8,6 @@ import exceptions.ReceiverNotSetException;
 /**
  * Sense.java
  *
- * @author 	Chris B
  * @date	28 Mar 2013
  * @version	1.0
  */
@@ -29,7 +28,7 @@ public class DropFood extends AbstractAntCommand {
 	 */
 	@Override
 	public int execute() throws ReceiverNotSetException {
-		return 0;
+		return super.receiver.dropFood(nextState);
 	}
 
 	@Override

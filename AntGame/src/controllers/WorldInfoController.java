@@ -55,7 +55,7 @@ public class WorldInfoController extends InputListener {
 	    if(returnVal == JFileChooser.APPROVE_OPTION) {
 	    	file = chooser.getSelectedFile();
 	    }
-		Config.currentBrainPath = chooser.getCurrentDirectory().getPath();
+		Config.currentWorldPath = chooser.getCurrentDirectory().getPath();
 		return file;
 	}
 }

@@ -62,7 +62,7 @@ public class HelpScreen extends AbstractScreen {
 		stage.addActor(backgroundImage);
 		
 		// create a table layout to add ui items to the stage
-		Skin skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+		Skin skin = Assets.skin;
 		root = new Table(skin);
 		root.setFillParent(true);
 

@@ -5,6 +5,7 @@ package antgame;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 /**
  * Assets.java
@@ -16,11 +17,13 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 public class Assets {
 
 	public static TextureAtlas textures;
+	public static Skin skin;
 	
 	public static void load() {
 		
 		// load textures
 		textures = new TextureAtlas(Gdx.files.internal("data/antgame.pack"));
+		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
 		
 		// load sounds
 		
@@ -28,6 +31,7 @@ public class Assets {
 
 	public static void dispose() {
 		textures.dispose();
+		skin.dispose();
 	}
 	
 }

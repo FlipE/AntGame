@@ -32,13 +32,13 @@ public class FormValidationFeedback extends Table {
 		this.add(blank);
 	}
 	
-	public void setValid() {
+	public void setValid(boolean isValid) {
 		this.clear();
-		this.add(valid);
-	}
-	
-	public void setInvalid() {
-		this.clear();
-		this.add(invalid);
+		if(isValid) {
+			this.add(valid);
+		}
+		else {
+			this.add(invalid);
+		}
 	}
 }

@@ -28,25 +28,25 @@ public class AntWorld implements Model {
 	private List<Ant> ants;
 //	private List<RedAntHill> redHillCells;
 //	private List<BlackAntHill> blackHillCells;
-	private int turn;
+	private int roundNum;
 	private int redScore;
 	private int blackScore;
-	private AntBrain redBrain;
-	private AntBrain blackBrain;
+	private PlayerInfo redPlayer;
+	private PlayerInfo blackPlayer;
 	private Random random;
 
 	/**
 	 * 
 	 * @param world
 	 */
-	public AntWorld(Cell[][] world, AntBrain redBrain, AntBrain blackBrain) {
+	public AntWorld(Cell[][] world, PlayerInfo redPlayer, PlayerInfo blackPlayer) {
 		this.world = world;
-		this.redBrain = redBrain;
-		this.blackBrain = blackBrain;
+		this.redPlayer = redPlayer;
+		this.blackPlayer = blackPlayer;
 		this.ants = new ArrayList<Ant>();
 //		this.redHillCells = new ArrayList<RedAntHill>();
 //		this.blackHillCells = new ArrayList<BlackAntHill>();
-		this.turn = 1;
+		this.roundNum = 1;
 		this.redScore = 0;
 		this.blackScore = 0;
 		// TODO some way of making the seeds different for games but somehow saveable?
@@ -95,7 +95,7 @@ public class AntWorld implements Model {
 		}
 
 		// increment the round counter
-		turn += 1;
+		roundNum += 1;
 
 	}
 
@@ -203,16 +203,6 @@ public class AntWorld implements Model {
 			// TODO log this out of bounds exception
 		}
 	}
-
-//	public static final int SENSE_FRIEND = 0;
-//	public static final int SENSE_FOE = 1;
-//	public static final int SENSE_FRIENDWITHFOOD = 2;
-//	public static final int SENSE_FOEWITHFOOD = 3;
-//	public static final int SENSE_FOOD = 4;
-//	public static final int SENSE_ROCK = 5;
-//	public static final int SENSE_FOEMARKER = 6;
-//	public static final int SENSE_FOEHOME = 7;
-//	public static final int SENSE_HOME = 8;
 	
 	public boolean senseFriend(int x, int y, int color) {
 		try {
@@ -412,7 +402,6 @@ public class AntWorld implements Model {
 	 * @param color
 	 */
 	public void mark(int x, int y, int type, int color) {
-		// TODO this doesn;t do anything if the food doesn;t get dropped off due to a full cell?
 		try {
 			Cell cell = this.world[x][y];
 			if (cell instanceof ClearCell) {
@@ -437,7 +426,6 @@ public class AntWorld implements Model {
 	 * @param color
 	 */
 	public void unmark(int x, int y, int type, int color) {
-		// TODO this doesn;t do anything if the food doesn;t get dropped off due to a full cell?
 		try {
 			Cell cell = this.world[x][y];
 			if (cell instanceof ClearCell) {
@@ -462,19 +450,47 @@ public class AntWorld implements Model {
 		return this.world;
 	}
 
+	
 	/**
-	 * @return the redBrain
+	 * @return the redPlayer
 	 */
 	public AntBrain getRedBrain() {
-		return this.redBrain;
+		return this.redPlayer.getBrain();
 	}
 
 	/**
-	 * @return the blackBrain
+	 * @return the blackPlayer
 	 */
 	public AntBrain getBlackBrain() {
-		return blackBrain;
+		return blackPlayer.getBrain();
 	}
+
+	/**
+	 * @return
+	 */
+	public int getRoundNum() {
+		return this.roundNum;
+	}
+
+	/**
+	 * Returns the id of the player with the highest score or
+	 * {@link antgame.Config.DRAW} if the game is a draw.
+	 * 
+	 * @return the id of the player with the highest score or 
+	 * 		   {@link antgame.Config.DRAW} if the game is a draw.
+	 */
+	public int getWinner() {
+		int winner = Config.DRAW;
+		if(this.blackScore > this.redScore) {
+			winner = this.blackPlayer.getId();
+		}
+		else if(this.blackScore < this.redScore) {
+			winner = this.redPlayer.getId();
+		}		
+		return winner;
+	}
+	
+	
 	
 	// TODO ants that die
 	

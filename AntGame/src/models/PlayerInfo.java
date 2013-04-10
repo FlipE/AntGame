@@ -9,6 +9,7 @@ import java.util.List;
 import listeners.AntBrainLoaderListener;
 import listeners.PlayerInfoListener;
 import ai.AntBrain;
+import antgame.Config;
 import fileio.AntBrainLoader;
 
 /**
@@ -68,10 +69,6 @@ public class PlayerInfo implements AntBrainLoaderListener {
 		// set the brain path to the new one given
 		this.brainPath = brainPath;
 		
-		// set the brain state to validating
-		// update listeners with brain state
-		//this.notifyUpdateBrainPath("Validating...");
-		
 		// create a new brain loader thread
 		AntBrainLoader loader = new AntBrainLoader(brainPath);
 		Thread t = new Thread(loader);
@@ -95,15 +92,6 @@ public class PlayerInfo implements AntBrainLoaderListener {
 	}
 	
 	/**
-	 * @param brainPath
-	 */
-	private void notifyUpdateBrainPath(String brainPath, boolean isValid) {
-		for(PlayerInfoListener l : this.listeners) {
-			l.updateBrainPath(brainPath, isValid);
-		}
-	}
-
-	/**
 	 * @return the name
 	 */
 	public String getName() {
@@ -114,9 +102,21 @@ public class PlayerInfo implements AntBrainLoaderListener {
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
+		// replace many white spaces with just one
+		name = name.replaceAll("\\s+", " ");
+		
+		// limit the name length
+		name = name.substring(0, Math.min(name.length(), Config.MAX_NAME_LENGTH));
+		
 		this.name = name;
+		if(!name.equals("") && !name.equals(" ")) {
+			this.notifyUpdateName(name, true);
+		}
+		else {
+			this.notifyUpdateName(name, false);
+		}
 	}
-	
+
 	/**
 	 * @return the id
 	 */
@@ -137,5 +137,24 @@ public class PlayerInfo implements AntBrainLoaderListener {
 	
 	public void removeListener(PlayerInfoListener l) {
 		this.listeners.remove(l);
+	}
+	
+	/**
+	 * @param brainPath
+	 */
+	private void notifyUpdateBrainPath(String brainPath, boolean isValid) {
+		for(PlayerInfoListener l : this.listeners) {
+			l.updateBrainPath(brainPath, isValid);
+		}
+	}
+
+	/**
+	 * @param name
+	 * @param isValid
+	 */
+	private void notifyUpdateName(String name, boolean isValid) {
+		for(PlayerInfoListener l : this.listeners) {
+			l.updateName(name, isValid);
+		}
 	}
 }

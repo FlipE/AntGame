@@ -42,6 +42,9 @@ public class TwoPlayerMenuController extends InputListener {
 				
 		if(actorName.equals(Config.BACK_TO_MENU)) {
 			game.setMainMenuScreen();
-		}	
+		}
+		else if(actorName.equals(Config.PLAY)) {
+			game.setPlayScreen();
+		}
 	}
 }

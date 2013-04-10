@@ -4,13 +4,14 @@
 package views;
 
 import models.AntWorld;
+import antgame.Assets;
+import antgame.Match;
 import cells.BlackAntHill;
 import cells.Cell;
 import cells.ClearCell;
 import cells.RedAntHill;
 import cells.RockyCell;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -25,7 +26,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
  */
 public class AntWorldTextView implements View {
 
-	private AntWorld world;
 	private Cell[][] cells;
 	private Stage stage;
 	private Label text;
@@ -33,23 +33,20 @@ public class AntWorldTextView implements View {
 	/**
 	 * @param world
 	 */
-	public AntWorldTextView(AntWorld world, Stage stage) {
+	public AntWorldTextView(Cell[][] world, Stage stage) {
 		super();
-		this.world = world;
-		this.cells = world.getCells();
+		this.cells = world;
 		this.stage = stage;
 		this.initialise();
 	}
 
 	private void initialise() {
 		// create a table layout to add ui items to the stage
-		Skin skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+		Skin skin = Assets.skin;
 		Table root = new Table(skin);
 		root.setFillParent(true);
 		
 		text = new Label("", skin);
-		//text.setFillParent(true);
-		//text.setWrap(false);
 		
 		root.add(text);
 		stage.addActor(root);
@@ -59,8 +56,8 @@ public class AntWorldTextView implements View {
 	 * @see views.View#draw()
 	 */
 	@Override
-	public void draw() {
-		
+	public synchronized void draw() {
+
 		StringBuffer s = new StringBuffer();
 		
 		for(int x = 0; x < this.cells.length; x += 1) {
@@ -97,6 +94,14 @@ public class AntWorldTextView implements View {
 		text.setText(s.toString());
 		
 		stage.draw();
+	}
+	
+	/**
+	 * 
+	 * @param world
+	 */
+	public void setWorld(Cell[][] world) {
+		this.cells = world;
 	}
 
 }
