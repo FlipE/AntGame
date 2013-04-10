@@ -83,9 +83,23 @@ public class WorldGenerator
 		for(int i=0; i<numOfRocks; i++){
 			int x = (int)(148 * Math.random()) + 1;
 			int y = (int)(148 * Math.random()) + 1;
-			world[x][y] = '#';
-			setTileOccupied(x, y);
+			
+			if(checkIfRockIsValid(x, y)){
+				world[x][y] = '#';
+				setTileOccupied(x, y);
+			}
+			else{
+				i--;
+			}
 		}
+	}
+	
+	private boolean checkIfRockIsValid(int x, int y)
+	{
+		if(tilesOccupied[x][y]){
+			return false;
+		}
+		return true;
 	}
 
 	public void generateFoodBlobs()
