@@ -33,7 +33,7 @@ public class SimpleWorldLoader {
 		try {
 			File file = new File(filepath);
 			String fileContent = new String(Files.readAllBytes(file.toPath()));
-			String[] lines = fileContent.split("\n");
+			String[] lines = fileContent.split("\r\n|\n");	//not only \n newline used
 			String line = null;
 			
 			// the first line is the width
@@ -54,6 +54,9 @@ public class SimpleWorldLoader {
 				
 				line = lines[y];
 				
+				if(line.startsWith(" ")){		//accounts for indents
+					line = line.substring(1);
+				}
 				// split the string on white space char
 				String[] parts = line.split("\\s");
 				
@@ -79,7 +82,7 @@ public class SimpleWorldLoader {
 					}
 					else {
 						// TODO log the error unknown cell type
-						System.out.println("WTF! fix this motherfucker!");
+						System.out.println("unknown cell type");
 					}
 					cells[x][y] = cell;
 					
