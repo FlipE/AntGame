@@ -3,6 +3,8 @@ package fileio;
 import java.util.ArrayList;
 import java.util.List;
 
+import parsers.world.WorldParser;
+
 import listeners.WorldLoaderListener;
 import cells.Cell;
 import exceptions.InvalidWorldException;
@@ -18,7 +20,13 @@ public class WorldLoader implements Runnable {
 	}
 	
 	private Cell[][] load(String filepath) throws InvalidWorldException {
-		return SimpleWorldLoader.load(filepath);
+		//return SimpleWorldLoader.load(filepath);
+		try {
+			return WorldParser.parse(filepath);
+		}
+		catch(Exception e) {
+			throw new InvalidWorldException(e.getMessage());
+		}
 	}
 	
 	@Override

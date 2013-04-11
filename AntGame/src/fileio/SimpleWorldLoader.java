@@ -84,7 +84,6 @@ public class SimpleWorldLoader {
 					cells[x][y] = cell;
 					
 				}
-				System.out.println(y + " " + lines[y]);
 			}		
 			
 			//reader.close();
