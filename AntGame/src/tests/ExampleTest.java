@@ -25,8 +25,10 @@ public class ExampleTest {
 			Cell[][] cells = SimpleWorldLoader.load("tiny.world");
 			AntWorld world = new AntWorld(cells, redBrain, blackBrain);
 			
-			// some test here
+			
 			world.update();
+			world.printWorld();
+			//world.printWorld();
 		}
 		catch (InvalidWorldException e) {
 			e.printStackTrace();

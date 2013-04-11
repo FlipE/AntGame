@@ -40,4 +40,8 @@ public class RedAntHill extends ClearCell implements AntHill {
 	public void depositFood() {
 	}
 	
+	@Override
+	public String toString() {
+		return "black hill;";
+	}
 }

@@ -156,4 +156,13 @@ public class ClearCell implements Cell {
 		}
 		return false;
 	}
+	@Override
+	public String toString() {
+		if (food == 0){
+		return "";
+		}
+		else{
+			return food + " food;";
+		}
+	}
 }
