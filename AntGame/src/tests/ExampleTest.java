@@ -19,8 +19,8 @@ public class ExampleTest {
 		PlayerInfo redPlayer = new PlayerInfo("Red Team", 1);
 		PlayerInfo blackPlayer = new PlayerInfo("Black Team", 2);
 		
-		redPlayer.loadBrain("tinyBrain.ant");
-		blackPlayer.loadBrain("tinyBrain.ant");
+		redPlayer.loadBrain("tinyBrain.brain");
+		blackPlayer.loadBrain("tinyBrain.brain");
 		
 		WorldInfo worldInfo = new WorldInfo();
 		worldInfo.loadWorld("tiny.world");
