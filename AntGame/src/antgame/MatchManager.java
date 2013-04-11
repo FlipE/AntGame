@@ -66,8 +66,8 @@ public class MatchManager {
 			for(int i = 0; i < players.size - 1; i += 1) {
 				for(int j = i + 1; j < players.size; j += 1) {
 					// round 1
-					AntWorld world1 = new AntWorld(worldInfo.getWorld(), players.get(i), players.get(j));
-					Match round1 = new Match(world1, "Round 1");
+					AntWorld world1 = new AntWorld(worldInfo.getWorld(), players.get(i).getBrain(), players.get(j).getBrain());
+					Match round1 = new Match(world1, players.get(i), players.get(j), "Round 1");
 					
 					// round 2
 					//AntWorld world2 = new AntWorld(worldInfo.getWorld(), players.get(j), players.get(i));

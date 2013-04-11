@@ -20,13 +20,13 @@ public class WorldLoader implements Runnable {
 	}
 	
 	private Cell[][] load(String filepath) throws InvalidWorldException {
-		//return SimpleWorldLoader.load(filepath);
-		try {
-			return WorldParser.parse(filepath);
-		}
-		catch(Exception e) {
-			throw new InvalidWorldException(e.getMessage());
-		}
+		return SimpleWorldLoader.load(filepath);
+//		try {
+//			return WorldParser.parse(filepath);
+//		}
+//		catch(Exception e) {
+//			throw new InvalidWorldException(e.getMessage());
+//		}
 	}
 	
 	@Override

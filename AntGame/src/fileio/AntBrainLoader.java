@@ -43,7 +43,7 @@ public class AntBrainLoader implements Runnable {
 	 * @return
 	 * @throws SyntacticallyInvalidInputException
 	 */
-	public AntBrain load(String filepath) throws SyntacticallyInvalidInputException {
+	public static AntBrain load(String filepath) throws SyntacticallyInvalidInputException {
 		List<Token> tokens = new LinkedList<Token>();
 		AntBrain brain = null;
 		

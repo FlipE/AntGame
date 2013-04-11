@@ -5,9 +5,11 @@ package antgame;
 
 import java.util.ArrayList;
 import java.util.List;
-import cells.Cell;
+
 import listeners.MatchListener;
 import models.AntWorld;
+import models.PlayerInfo;
+import cells.Cell;
 
 /**
  * A match runs a single match
@@ -40,13 +42,19 @@ public class Match {
 	
 	/** the speed at which the simulation should be run. This effects the number of rounds calculated per frame */
 	int matchSpeed;
+
+	/** the two players fighting in this match */
+	private PlayerInfo redPlayer;
+	private PlayerInfo blackPlayer;
 	
 	/**
 	 * 
 	 * @param world
 	 */
-	public Match(AntWorld world, String name) {
+	public Match(AntWorld world, PlayerInfo redPlayer, PlayerInfo blackPlayer, String name) {
 		this.world = world;
+		this.redPlayer = redPlayer;
+		this.blackPlayer = blackPlayer;
 		this.name = name;
 		this.isFinished = false;
 		this.listeners = new ArrayList<MatchListener>();
@@ -60,7 +68,7 @@ public class Match {
 			}
 		}
 		else {
-			this.winner = world.getWinner();
+			this.winner = this.getWinner(world.getRedScore(), world.getBlackScore());
 			this.isFinished = true;
 			this.notifyMatchFinished();
 		}		
@@ -86,5 +94,24 @@ public class Match {
 	
 	public void setSpeed(int speed) {
 		this.matchSpeed = speed;
+	}
+	
+	/**
+	 * Returns the id of the player with the highest score or
+	 * {@link antgame.Config.DRAW} if the game is a draw.
+	 * 
+	 * @param redScore
+	 * @param blackScore
+	 * @return the id of the player with the highest score or {@link antgame.Config.DRAW} if the game is a draw.
+	 */
+	public int getWinner(int redScore, int blackScore) {
+		int winner = Config.DRAW;
+		if(blackScore > redScore) {
+			winner = blackPlayer.getId();
+		}
+		else if(blackScore < redScore) {
+			winner = redPlayer.getId();
+		}		
+		return winner;
 	}
 }

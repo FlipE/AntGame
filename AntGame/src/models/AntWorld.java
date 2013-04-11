@@ -29,18 +29,18 @@ public class AntWorld implements Model {
 	private int roundNum;
 	private int redScore;
 	private int blackScore;
-	private PlayerInfo redPlayer;
-	private PlayerInfo blackPlayer;
+	private AntBrain redBrain;
+	private AntBrain blackBrain;
 	private Random random;
 
 	/**
 	 * 
 	 * @param world
 	 */
-	public AntWorld(Cell[][] world, PlayerInfo redPlayer, PlayerInfo blackPlayer) {
+	public AntWorld(Cell[][] world, AntBrain redBrain, AntBrain blackBrain) {
 		this.world = world;
-		this.redPlayer = redPlayer;
-		this.blackPlayer = blackPlayer;
+		this.redBrain = redBrain;
+		this.blackBrain = blackBrain;
 		this.ants = new ArrayList<Ant>();
 		this.roundNum = 1;
 		this.redScore = 0;
@@ -453,14 +453,14 @@ public class AntWorld implements Model {
 	 * @return the redPlayer
 	 */
 	public AntBrain getRedBrain() {
-		return this.redPlayer.getBrain();
+		return this.redBrain;
 	}
 
 	/**
 	 * @return the blackPlayer
 	 */
 	public AntBrain getBlackBrain() {
-		return blackPlayer.getBrain();
+		return this.blackBrain;
 	}
 
 	/**
@@ -470,25 +470,13 @@ public class AntWorld implements Model {
 		return this.roundNum;
 	}
 
-	/**
-	 * Returns the id of the player with the highest score or
-	 * {@link antgame.Config.DRAW} if the game is a draw.
-	 * 
-	 * @return the id of the player with the highest score or 
-	 * 		   {@link antgame.Config.DRAW} if the game is a draw.
-	 */
-	public int getWinner() {
-		int winner = Config.DRAW;
-		if(this.blackScore > this.redScore) {
-			winner = this.blackPlayer.getId();
-		}
-		else if(this.blackScore < this.redScore) {
-			winner = this.redPlayer.getId();
-		}		
-		return winner;
+	public int getRedScore() {
+		return this.redScore;
 	}
 	
-	
+	public int getBlackScore() {
+		return this.blackScore;
+	}
 	
 	// TODO ants that die
 	

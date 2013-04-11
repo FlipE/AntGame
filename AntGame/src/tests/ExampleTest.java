@@ -1,9 +1,12 @@
 package tests;
 
-import models.Ant;
 import models.AntWorld;
-import models.PlayerInfo;
-import models.WorldInfo;
+import ai.AntBrain;
+import cells.Cell;
+import exceptions.InvalidWorldException;
+import exceptions.SyntacticallyInvalidInputException;
+import fileio.AntBrainLoader;
+import fileio.SimpleWorldLoader;
 
 /**
  * Test.java
@@ -15,20 +18,21 @@ import models.WorldInfo;
 public class ExampleTest {
 
 	public static void main(String[] args) {
+		try {
+			AntBrain redBrain = AntBrainLoader.load("tinyBrain.brain");
+			AntBrain blackBrain = AntBrainLoader.load("tinyBrain.brain");
 		
-		PlayerInfo redPlayer = new PlayerInfo("Red Team", 1);
-		PlayerInfo blackPlayer = new PlayerInfo("Black Team", 2);
-		
-		redPlayer.loadBrain("tinyBrain.brain");
-		blackPlayer.loadBrain("tinyBrain.brain");
-		
-		WorldInfo worldInfo = new WorldInfo();
-		worldInfo.loadWorld("tiny.world");
-		
-		AntWorld world = new AntWorld(worldInfo.getWorld(), redPlayer, blackPlayer);
-		
-		
-		
+			Cell[][] cells = SimpleWorldLoader.load("tiny.world");
+			AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+			
+			// some test here
+			world.update();
+		}
+		catch (InvalidWorldException e) {
+			e.printStackTrace();
+		}
+		catch (SyntacticallyInvalidInputException e) {
+			e.printStackTrace();
+		}		
 	}
-	
 }
