@@ -29,7 +29,7 @@ public class RockyCell implements Cell {
 
 	@Override
 	public boolean isOccupied() {
-		return false;
+		return true;
 	}
 
 	@Override

@@ -50,7 +50,7 @@ public class Match {
 		this.name = name;
 		this.isFinished = false;
 		this.listeners = new ArrayList<MatchListener>();
-		this.matchSpeed = 10000;
+		this.matchSpeed = 10;
 	}
 
 	public void update() {

@@ -4,9 +4,8 @@
 package screens;
 
 import listeners.MatchListener;
-import models.AntWorld;
-import views.AntWorldTextView;
-import ai.AntBrain;
+import views.AntWorldView;
+import views.View;
 import antgame.AntGame;
 import antgame.Match;
 import antgame.MatchManager;
@@ -26,7 +25,7 @@ import com.badlogic.gdx.utils.Array;
 public class PlayScreen extends AbstractScreen implements MatchListener {
 
 	private Match match;
-	private AntWorldTextView worldView;
+	private View worldView;
 	private MatchManager matchManager;
 	private Array<Match> matches;
 	
@@ -73,7 +72,7 @@ public class PlayScreen extends AbstractScreen implements MatchListener {
 			match = this.matches.get(0);
 			
 			// create the new view giving it the world
-			worldView = new AntWorldTextView(match.getCells(), stage);
+			worldView = new AntWorldView(match.getCells(), stage);
 		}
 		catch (Exception e) {
 			// if the matche manager can't create any games, return to the main menu

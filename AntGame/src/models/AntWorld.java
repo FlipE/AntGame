@@ -26,8 +26,6 @@ public class AntWorld implements Model {
 
 	private Cell[][] world;
 	private List<Ant> ants;
-//	private List<RedAntHill> redHillCells;
-//	private List<BlackAntHill> blackHillCells;
 	private int roundNum;
 	private int redScore;
 	private int blackScore;
@@ -44,8 +42,6 @@ public class AntWorld implements Model {
 		this.redPlayer = redPlayer;
 		this.blackPlayer = blackPlayer;
 		this.ants = new ArrayList<Ant>();
-//		this.redHillCells = new ArrayList<RedAntHill>();
-//		this.blackHillCells = new ArrayList<BlackAntHill>();
 		this.roundNum = 1;
 		this.redScore = 0;
 		this.blackScore = 0;
@@ -77,6 +73,7 @@ public class AntWorld implements Model {
 						// this shouldn't happen but if the ant hill 
 						// already has an ant we don't need to spawn
 						// one anyway.
+						e.printStackTrace();
 					}
 				}
 			}
@@ -143,16 +140,19 @@ public class AntWorld implements Model {
 				
 				return true;
 			}
-			catch (AntNotFoundException e) {
+			catch (AntNotFoundException e) {				
+				e.printStackTrace();
 				return false;
 			}
-			catch (CellOccupiedException e) {
+			catch (CellOccupiedException e) {				
+				e.printStackTrace();
 				return false;
 			}
 		}
-		catch (NullPointerException e) {
-			return false;
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
 		}
+		return false;
 	}
 
 	/**
@@ -176,13 +176,11 @@ public class AntWorld implements Model {
 				
 				// TODO keep track of score possible to pick up food from clear cell, home, foe home
 			}
-			else {
-				return false;
-			}
 		}
-		catch (NullPointerException e) {
-			return false;
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
 		}
+		return false;
 	}
 
 	/**
@@ -199,8 +197,8 @@ public class AntWorld implements Model {
 				// TODO keep track of score possible to drop food on clear cell, home, foe home
 			}
 		}
-		catch (NullPointerException e) {
-			// TODO log this out of bounds exception
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -217,8 +215,8 @@ public class AntWorld implements Model {
 				}
 			}
 		}
-		catch (NullPointerException e) {
-			// TODO log error?
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -236,8 +234,8 @@ public class AntWorld implements Model {
 				}
 			}
 		}
-		catch (NullPointerException e) {
-			// TODO log error?
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -257,8 +255,8 @@ public class AntWorld implements Model {
 				}
 			}
 		}
-		catch (NullPointerException e) {
-			// TODO log error?
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -278,8 +276,8 @@ public class AntWorld implements Model {
 				}
 			}
 		}
-		catch (NullPointerException e) {
-			// TODO log error?
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -294,8 +292,8 @@ public class AntWorld implements Model {
 				}
 			}
 		}
-		catch (NullPointerException e) {
-			// TODO log error?
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -307,8 +305,8 @@ public class AntWorld implements Model {
 				return true;
 			}
 		}
-		catch (NullPointerException e) {
-			// TODO log error?
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -333,8 +331,8 @@ public class AntWorld implements Model {
 				}
 			}
 		}
-		catch (NullPointerException e) {
-			// TODO log error?
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -349,8 +347,8 @@ public class AntWorld implements Model {
 				}
 			}
 		}
-		catch (NullPointerException e) {
-			// TODO log error?
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -369,8 +367,8 @@ public class AntWorld implements Model {
 				}
 			}
 		}
-		catch (NullPointerException e) {
-			// TODO log error?
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -389,8 +387,8 @@ public class AntWorld implements Model {
 				}
 			}
 		}
-		catch (NullPointerException e) {
-			// TODO log error?
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -414,8 +412,8 @@ public class AntWorld implements Model {
 				}
 			}
 		}
-		catch (NullPointerException e) {
-			// TODO log this
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -438,8 +436,8 @@ public class AntWorld implements Model {
 				}
 			}
 		}
-		catch (NullPointerException e) {
-			// TODO log this
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
 		}
 	}
 

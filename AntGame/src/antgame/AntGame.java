@@ -1,12 +1,12 @@
 package antgame;
 
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 import screens.HelpScreen;
 import screens.MainMenuScreen;
 import screens.PlayScreen;
 import screens.SplashScreen;
+import screens.TestMapRenderScreen;
 import screens.TwoPlayerMenuScreen;
 
 import com.badlogic.gdx.Game;
@@ -23,6 +23,7 @@ public class AntGame extends Game {
 	Screen helpScreen;
 	Screen playScreen;
 	Screen resultsScreen;
+	Screen testRender;
 	
 	@Override
 	public void create() {
@@ -54,11 +55,13 @@ public class AntGame extends Game {
 		this.twoPlayerMenuScreen = new TwoPlayerMenuScreen(this);
 		this.helpScreen = new HelpScreen(this);
 		this.playScreen = new PlayScreen(this);
-				
+		this.testRender = new TestMapRenderScreen(this);
+		
 		// start off on the splash screen
 		//this.setScreen(this.splashScreen);
 		this.setScreen(this.mainMenuScreen);
 		//this.setScreen(this.playScreen);
+		//this.setScreen(this.testRender);
 	}
 
 	/**

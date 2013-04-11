@@ -70,12 +70,12 @@ public class MatchManager {
 					Match round1 = new Match(world1, "Round 1");
 					
 					// round 2
-					AntWorld world2 = new AntWorld(worldInfo.getWorld(), players.get(j), players.get(i));
-					Match round2 = new Match(world2, "Round 2");
+					//AntWorld world2 = new AntWorld(worldInfo.getWorld(), players.get(j), players.get(i));
+					//Match round2 = new Match(world2, "Round 2");
 					
 					// add the rounds to the list of all matchQueue
 					this.matchQueue.add(round1);
-					this.matchQueue.add(round2);
+					//this.matchQueue.add(round2);
 				}
 			}			
 		}

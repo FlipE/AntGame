@@ -39,12 +39,12 @@ public class SimpleWorldLoader {
 			// the first line is the width
 			//line = reader.readLine();
 			line = lines[0];
-			int width = Integer.parseInt(line);
+			int width = Integer.parseInt(line.trim());
 			
 			// second line is the height
 			//line = reader.readLine();
 			line = lines[1];
-			int height = Integer.parseInt(line);
+			int height = Integer.parseInt(line.trim());
 			
 			// create the cells array which hold the world representation
 			Cell[][] cells = new Cell[width][height];
@@ -84,13 +84,14 @@ public class SimpleWorldLoader {
 					cells[x][y] = cell;
 					
 				}
+				System.out.println(y + " " + lines[y]);
 			}		
 			
 			//reader.close();
 			
 			return cells;
 		}
-		catch(IOException e) {
+		catch(Exception e) {
 			throw new InvalidWorldException("Problem loading world");
 		}
 		
