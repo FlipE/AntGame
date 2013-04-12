@@ -50,13 +50,14 @@ public class SimpleWorldLoader {
 			Cell[][] cells = new Cell[width][height];
 			
 			//for (int y = 0;(line = reader.readLine()) != null; y += 1) {
-			for (int y = 2; y < height; y += 1) {
+			for (int y = 0; y < height; y += 1) {
 				
-				line = lines[y];
+				line = lines[y + 2];
 				
 				if(line.startsWith(" ")){		//accounts for indents
 					line = line.substring(1);
 				}
+								
 				// split the string on white space char
 				String[] parts = line.split("\\s");
 				
@@ -84,16 +85,23 @@ public class SimpleWorldLoader {
 						// TODO log the error unknown cell type
 						System.out.println("unknown cell type");
 					}
-					cells[x][y] = cell;
-					
+					cells[x][y] = cell;					
 				}
 			}		
 			
 			//reader.close();
+			/*
+			//System.out.println("world "+cells[0][0].toString());
+			for(int i = 0; i < cells.length; i++){
+				for (int j = 0; j < cells[0].length; j++){
+					System.out.println("cell ("+i+","+j+"):" + cells[i][j].toString());
+				}
+			}*/
 			
 			return cells;
 		}
 		catch(Exception e) {
+			e.printStackTrace();
 			throw new InvalidWorldException("Problem loading world");
 		}
 		

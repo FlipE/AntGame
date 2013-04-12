@@ -25,8 +25,8 @@ public class ExampleTest {
 			Cell[][] cells = SimpleWorldLoader.load("tiny.world");
 			AntWorld world = new AntWorld(cells, redBrain, blackBrain);
 			
-			
-			world.update();
+			System.out.println(cells[0][0]);
+			//world.update();
 			world.printWorld();
 			//world.printWorld();
 		}

@@ -482,7 +482,6 @@ public class AntWorld implements Model {
 	
 	
 	public void printWorld(){
-		System.out.println("world "+world[0][0].toString());
 		for(int i = 0; i < world.length; i++){
 			for (int j = 0; j < world[0].length; j++){
 				System.out.println("cell ("+i+","+j+"):" + world[i][j].toString());
