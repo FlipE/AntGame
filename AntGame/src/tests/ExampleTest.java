@@ -1,5 +1,13 @@
 package tests;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
+
 import models.AntWorld;
 import ai.AntBrain;
 import cells.Cell;
@@ -19,21 +27,34 @@ public class ExampleTest {
 
 	public static void main(String[] args) {
 		try {
-			AntBrain redBrain = AntBrainLoader.load("tinyBrain.brain");
-			AntBrain blackBrain = AntBrainLoader.load("tinyBrain.brain");
+			File f = new File ("ourLog.txt");
+			BufferedWriter fw = Files.newBufferedWriter(f.toPath(), Charset.forName("UTF-8"), StandardOpenOption.CREATE);
+			
+			
+			AntBrain redBrain = AntBrainLoader.load("sample.brain");
+			AntBrain blackBrain = AntBrainLoader.load("sample.brain");
 		
-			Cell[][] cells = SimpleWorldLoader.load("tiny.world");
+			Cell[][] cells = SimpleWorldLoader.load("tiny1.world");
 			AntWorld world = new AntWorld(cells, redBrain, blackBrain);
 			
-			System.out.println(cells[0][0]);
-			//world.update();
-			world.printWorld();
-			//world.printWorld();
+			StringBuffer buff = new StringBuffer(0);
+			
+			buff.append("random seed: 12345\r\n");
+			for (int i=0; i<10; i++){
+				buff.append("\r\nAfter round "+i+"...\r\n");
+				buff.append(world.printWorld());
+				world.update();
+			}
+			fw.write(buff.toString(), 0, buff.toString().length());
+			System.out.print(buff);
 		}
 		catch (InvalidWorldException e) {
 			e.printStackTrace();
 		}
 		catch (SyntacticallyInvalidInputException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 	}

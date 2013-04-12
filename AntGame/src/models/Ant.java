@@ -311,7 +311,7 @@ public class Ant implements Model {
 	 * @return
 	 */
 	public int flip(int num, int zeroState, int otherState) {
-		int n = this.world.getInt(num);		
+		int n = this.world.getInt(num);	
 		return (n == 0) ? zeroState : otherState;
 	}
 
@@ -328,6 +328,14 @@ public class Ant implements Model {
 	public boolean hasFood() {
 		return this.hasFood;
 	}
+	public int getFood(){
+		if (hasFood){
+			return 1;
+		}
+		else{
+			return 0;
+		}
+	}
 	
 	public String toString1() {
 		int food = 0;
@@ -339,5 +347,21 @@ public class Ant implements Model {
 		if(hasFood()){food = 1;}
 		return "dir"+ direction+ ", food "+ food + ", state "+ state + ", resting " + resting;
 		//red ant of id 28, dir 5, food 0, state 27, resting 0
+	}
+
+	public int getResting() {
+		return resting;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public int getDirection() {
+		return direction;
+	}
+
+	public Position getPosition() {
+		return position;
 	}
 }

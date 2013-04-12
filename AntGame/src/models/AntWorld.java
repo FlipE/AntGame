@@ -2,8 +2,8 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
+import util.RandomGen;
 import ai.AntBrain;
 import antgame.Config;
 import cells.AntHill;
@@ -31,7 +31,7 @@ public class AntWorld implements Model {
 	private int blackScore;
 	private AntBrain redBrain;
 	private AntBrain blackBrain;
-	private Random random;
+	private RandomGen random;
 
 	/**
 	 * 
@@ -46,7 +46,7 @@ public class AntWorld implements Model {
 		this.redScore = 0;
 		this.blackScore = 0;
 		// TODO some way of making the seeds different for games but somehow saveable?
-		this.random = new Random(12345);
+		this.random = new RandomGen(12345);
 		this.initialise();
 	}
 
@@ -87,8 +87,17 @@ public class AntWorld implements Model {
 	public void update() {
 
 		// update all ants
-		for (Ant a : this.ants) {
-			a.update();
+		for(int y = 0; y < this.world[0].length; y += 1) {
+			for(int x = 0; x < this.world.length; x += 1) {
+				Cell c = this.world[x][y];
+				if(c instanceof ClearCell) {
+					if(c.isOccupied()) {
+						ClearCell clearCell = (ClearCell) c;
+						Ant a = clearCell.getAnt();
+						a.update();
+					}
+				}
+			}
 		}
 
 		// increment the round counter
@@ -160,7 +169,7 @@ public class AntWorld implements Model {
 	 * The number generated is between 0 and num-1.
 	 */
 	public int getInt(int num) {
-		return this.random.nextInt(num);
+		return this.random.randomint(num);
 	}
 
 	/**
@@ -481,11 +490,64 @@ public class AntWorld implements Model {
 	// TODO ants that die
 	
 	
-	public void printWorld(){
+	public String printWorld(){
+		int antID = 0;
+		StringBuffer buff = new StringBuffer();
 		for(int i = 0; i < world.length; i++){
 			for (int j = 0; j < world[0].length; j++){
-				System.out.println("cell ("+i+","+j+"):" + world[i][j].toString());
+				buff.append("cell ("+j+", "+i+"): ");
+				Cell cell = world[j][i];
+				String type = cell.getClass().getName();
+				if (type.equals("cells.RockyCell")){
+					buff.append("rock");
+				}
+				else{
+					ClearCell myCell =(ClearCell) cell;
+					if (type.equals("cells.BlackAntHill")){
+						buff.append("black hill; ");
+					}
+					else if (type.equals("cells.RedAntHill")){
+						buff.append("red hill; ");
+					}
+					else if (type.equals("cells.ClearCell")){
+						
+						if (myCell.numFood() == 0){
+							}
+							else{
+								buff.append(myCell.numFood() + " food; ");
+							}
+					}
+					if (myCell.senseFoeMarker(Config.BLACK_ANT)){
+						buff.append("black marks : ");
+						for (int x = 0; x <= 5; x++){
+							if (myCell.senseBlackTrail(x)){
+								buff.append(x);
+							}
+						}
+						buff.append("; ");
+					}
+					if (myCell.senseFoeMarker(Config.RED_ANT)){
+						buff.append("red marks : ");
+						for (int x = 0; x <= 5; x++){
+							if (myCell.senseRedTrail(x)){
+								buff.append(x);
+							}
+						}
+						buff.append("; ");
+					}
+					if (cell.isOccupied()&&type!="cells.RockyCell"){
+						Ant a = ((ClearCell)cell).getAnt();
+						if(a.getColor()== Config.RED_ANT){
+						buff.append("red ant of id "+ antID++ + ", dir "+ a.getDirection()+ ", food "+ a.getFood() + ", state "+ a.getState() + ", resting " + a.getResting());
+						}
+						else{
+							buff.append("black ant of id "+antID++ + ", dir "+ a.getDirection()+ ", food "+ a.getFood() + ", state "+ a.getState() + ", resting " + a.getResting());
+						}
+					}
+				}
+				buff.append("\r\n");
 			}
 		}
+		return buff.toString();
 	}
 }

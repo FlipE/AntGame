@@ -1,0 +1,663 @@
+random seed: 12345
+
+After round 0...
+cell (0, 0): rock
+cell (1, 0): rock
+cell (2, 0): rock
+cell (3, 0): rock
+cell (4, 0): rock
+cell (5, 0): rock
+cell (6, 0): rock
+cell (7, 0): rock
+cell (8, 0): rock
+cell (9, 0): rock
+cell (0, 1): rock
+cell (1, 1): 9 food; 
+cell (2, 1): 9 food; 
+cell (3, 1): 
+cell (4, 1): 
+cell (5, 1): 
+cell (6, 1): 
+cell (7, 1): 3 food; 
+cell (8, 1): 3 food; 
+cell (9, 1): rock
+cell (0, 2): rock
+cell (1, 2): 9 food; 
+cell (2, 2): rock
+cell (3, 2): 
+cell (4, 2): black hill; black ant of id 0, dir 0, food 0, state 0, resting 0
+cell (5, 2): black hill; black ant of id 1, dir 0, food 0, state 0, resting 0
+cell (6, 2): black hill; black ant of id 2, dir 0, food 0, state 0, resting 0
+cell (7, 2): black hill; black ant of id 3, dir 0, food 0, state 0, resting 0
+cell (8, 2): black hill; black ant of id 4, dir 0, food 0, state 0, resting 0
+cell (9, 2): rock
+cell (0, 3): rock
+cell (1, 3): 
+cell (2, 3): rock
+cell (3, 3): black hill; black ant of id 5, dir 0, food 0, state 0, resting 0
+cell (4, 3): black hill; black ant of id 6, dir 0, food 0, state 0, resting 0
+cell (5, 3): black hill; black ant of id 7, dir 0, food 0, state 0, resting 0
+cell (6, 3): black hill; black ant of id 8, dir 0, food 0, state 0, resting 0
+cell (7, 3): black hill; black ant of id 9, dir 0, food 0, state 0, resting 0
+cell (8, 3): black hill; black ant of id 10, dir 0, food 0, state 0, resting 0
+cell (9, 3): rock
+cell (0, 4): rock
+cell (1, 4): 
+cell (2, 4): 
+cell (3, 4): 5 food; 
+cell (4, 4): black hill; black ant of id 11, dir 0, food 0, state 0, resting 0
+cell (5, 4): black hill; black ant of id 12, dir 0, food 0, state 0, resting 0
+cell (6, 4): black hill; black ant of id 13, dir 0, food 0, state 0, resting 0
+cell (7, 4): black hill; black ant of id 14, dir 0, food 0, state 0, resting 0
+cell (8, 4): black hill; black ant of id 15, dir 0, food 0, state 0, resting 0
+cell (9, 4): rock
+cell (0, 5): rock
+cell (1, 5): red hill; red ant of id 16, dir 0, food 0, state 0, resting 0
+cell (2, 5): red hill; red ant of id 17, dir 0, food 0, state 0, resting 0
+cell (3, 5): red hill; red ant of id 18, dir 0, food 0, state 0, resting 0
+cell (4, 5): red hill; red ant of id 19, dir 0, food 0, state 0, resting 0
+cell (5, 5): red hill; red ant of id 20, dir 0, food 0, state 0, resting 0
+cell (6, 5): 5 food; 
+cell (7, 5): 
+cell (8, 5): 
+cell (9, 5): rock
+cell (0, 6): rock
+cell (1, 6): red hill; red ant of id 21, dir 0, food 0, state 0, resting 0
+cell (2, 6): red hill; red ant of id 22, dir 0, food 0, state 0, resting 0
+cell (3, 6): red hill; red ant of id 23, dir 0, food 0, state 0, resting 0
+cell (4, 6): red hill; red ant of id 24, dir 0, food 0, state 0, resting 0
+cell (5, 6): red hill; red ant of id 25, dir 0, food 0, state 0, resting 0
+cell (6, 6): red hill; red ant of id 26, dir 0, food 0, state 0, resting 0
+cell (7, 6): rock
+cell (8, 6): 
+cell (9, 6): rock
+cell (0, 7): rock
+cell (1, 7): red hill; red ant of id 27, dir 0, food 0, state 0, resting 0
+cell (2, 7): red hill; red ant of id 28, dir 0, food 0, state 0, resting 0
+cell (3, 7): red hill; red ant of id 29, dir 0, food 0, state 0, resting 0
+cell (4, 7): red hill; red ant of id 30, dir 0, food 0, state 0, resting 0
+cell (5, 7): red hill; red ant of id 31, dir 0, food 0, state 0, resting 0
+cell (6, 7): 
+cell (7, 7): rock
+cell (8, 7): 9 food; 
+cell (9, 7): rock
+cell (0, 8): rock
+cell (1, 8): 3 food; 
+cell (2, 8): 3 food; 
+cell (3, 8): 
+cell (4, 8): 
+cell (5, 8): 
+cell (6, 8): 
+cell (7, 8): 9 food; 
+cell (8, 8): 9 food; 
+cell (9, 8): rock
+cell (0, 9): rock
+cell (1, 9): rock
+cell (2, 9): rock
+cell (3, 9): rock
+cell (4, 9): rock
+cell (5, 9): rock
+cell (6, 9): rock
+cell (7, 9): rock
+cell (8, 9): rock
+cell (9, 9): rock
+
+After round 1...
+cell (0, 0): rock
+cell (1, 0): rock
+cell (2, 0): rock
+cell (3, 0): rock
+cell (4, 0): rock
+cell (5, 0): rock
+cell (6, 0): rock
+cell (7, 0): rock
+cell (8, 0): rock
+cell (9, 0): rock
+cell (0, 1): rock
+cell (1, 1): 9 food; 
+cell (2, 1): 9 food; 
+cell (3, 1): 
+cell (4, 1): 
+cell (5, 1): 
+cell (6, 1): 
+cell (7, 1): 3 food; 
+cell (8, 1): 3 food; 
+cell (9, 1): rock
+cell (0, 2): rock
+cell (1, 2): 9 food; 
+cell (2, 2): rock
+cell (3, 2): 
+cell (4, 2): black hill; black ant of id 0, dir 0, food 0, state 1, resting 0
+cell (5, 2): black hill; black ant of id 1, dir 0, food 0, state 1, resting 0
+cell (6, 2): black hill; black ant of id 2, dir 0, food 0, state 1, resting 0
+cell (7, 2): black hill; black ant of id 3, dir 0, food 0, state 1, resting 0
+cell (8, 2): black hill; black ant of id 4, dir 0, food 0, state 6, resting 0
+cell (9, 2): rock
+cell (0, 3): rock
+cell (1, 3): 
+cell (2, 3): rock
+cell (3, 3): black hill; black ant of id 5, dir 0, food 0, state 1, resting 0
+cell (4, 3): black hill; black ant of id 6, dir 0, food 0, state 6, resting 0
+cell (5, 3): black hill; black ant of id 7, dir 0, food 0, state 6, resting 0
+cell (6, 3): black hill; black ant of id 8, dir 0, food 0, state 1, resting 0
+cell (7, 3): black hill; black ant of id 9, dir 0, food 0, state 1, resting 0
+cell (8, 3): black hill; black ant of id 10, dir 0, food 0, state 6, resting 0
+cell (9, 3): rock
+cell (0, 4): rock
+cell (1, 4): 
+cell (2, 4): 
+cell (3, 4): 5 food; 
+cell (4, 4): black hill; black ant of id 11, dir 0, food 0, state 1, resting 0
+cell (5, 4): black hill; black ant of id 12, dir 0, food 0, state 1, resting 0
+cell (6, 4): black hill; black ant of id 13, dir 0, food 0, state 1, resting 0
+cell (7, 4): black hill; black ant of id 14, dir 0, food 0, state 1, resting 0
+cell (8, 4): black hill; black ant of id 15, dir 0, food 0, state 1, resting 0
+cell (9, 4): rock
+cell (0, 5): rock
+cell (1, 5): red hill; red ant of id 16, dir 0, food 0, state 1, resting 0
+cell (2, 5): red hill; red ant of id 17, dir 0, food 0, state 1, resting 0
+cell (3, 5): red hill; red ant of id 18, dir 0, food 0, state 1, resting 0
+cell (4, 5): red hill; red ant of id 19, dir 0, food 0, state 1, resting 0
+cell (5, 5): red hill; red ant of id 20, dir 0, food 0, state 1, resting 0
+cell (6, 5): 5 food; 
+cell (7, 5): 
+cell (8, 5): 
+cell (9, 5): rock
+cell (0, 6): rock
+cell (1, 6): red hill; red ant of id 21, dir 0, food 0, state 1, resting 0
+cell (2, 6): red hill; red ant of id 22, dir 0, food 0, state 1, resting 0
+cell (3, 6): red hill; red ant of id 23, dir 0, food 0, state 1, resting 0
+cell (4, 6): red hill; red ant of id 24, dir 0, food 0, state 1, resting 0
+cell (5, 6): red hill; red ant of id 25, dir 0, food 0, state 6, resting 0
+cell (6, 6): red hill; red ant of id 26, dir 0, food 0, state 1, resting 0
+cell (7, 6): rock
+cell (8, 6): 
+cell (9, 6): rock
+cell (0, 7): rock
+cell (1, 7): red hill; red ant of id 27, dir 0, food 0, state 1, resting 0
+cell (2, 7): red hill; red ant of id 28, dir 0, food 0, state 1, resting 0
+cell (3, 7): red hill; red ant of id 29, dir 0, food 0, state 1, resting 0
+cell (4, 7): red hill; red ant of id 30, dir 0, food 0, state 1, resting 0
+cell (5, 7): red hill; red ant of id 31, dir 0, food 0, state 1, resting 0
+cell (6, 7): 
+cell (7, 7): rock
+cell (8, 7): 9 food; 
+cell (9, 7): rock
+cell (0, 8): rock
+cell (1, 8): 3 food; 
+cell (2, 8): 3 food; 
+cell (3, 8): 
+cell (4, 8): 
+cell (5, 8): 
+cell (6, 8): 
+cell (7, 8): 9 food; 
+cell (8, 8): 9 food; 
+cell (9, 8): rock
+cell (0, 9): rock
+cell (1, 9): rock
+cell (2, 9): rock
+cell (3, 9): rock
+cell (4, 9): rock
+cell (5, 9): rock
+cell (6, 9): rock
+cell (7, 9): rock
+cell (8, 9): rock
+cell (9, 9): rock
+
+After round 2...
+cell (0, 0): rock
+cell (1, 0): rock
+cell (2, 0): rock
+cell (3, 0): rock
+cell (4, 0): rock
+cell (5, 0): rock
+cell (6, 0): rock
+cell (7, 0): rock
+cell (8, 0): rock
+cell (9, 0): rock
+cell (0, 1): rock
+cell (1, 1): 9 food; 
+cell (2, 1): 9 food; 
+cell (3, 1): 
+cell (4, 1): 
+cell (5, 1): 
+cell (6, 1): 
+cell (7, 1): 3 food; 
+cell (8, 1): 3 food; 
+cell (9, 1): rock
+cell (0, 2): rock
+cell (1, 2): 9 food; 
+cell (2, 2): rock
+cell (3, 2): 
+cell (4, 2): black hill; black ant of id 0, dir 0, food 0, state 2, resting 0
+cell (5, 2): black hill; black ant of id 1, dir 0, food 0, state 2, resting 0
+cell (6, 2): black hill; black ant of id 2, dir 0, food 0, state 2, resting 0
+cell (7, 2): black hill; black ant of id 3, dir 0, food 0, state 2, resting 0
+cell (8, 2): black hill; black ant of id 4, dir 0, food 0, state 8, resting 0
+cell (9, 2): rock
+cell (0, 3): rock
+cell (1, 3): 
+cell (2, 3): rock
+cell (3, 3): black hill; black ant of id 5, dir 0, food 0, state 2, resting 0
+cell (4, 3): black hill; black ant of id 6, dir 0, food 0, state 7, resting 0
+cell (5, 3): black hill; black ant of id 7, dir 0, food 0, state 8, resting 0
+cell (6, 3): black hill; black ant of id 8, dir 0, food 0, state 27, resting 0
+cell (7, 3): black hill; black ant of id 9, dir 0, food 0, state 2, resting 0
+cell (8, 3): black hill; black ant of id 10, dir 0, food 0, state 8, resting 0
+cell (9, 3): rock
+cell (0, 4): rock
+cell (1, 4): 
+cell (2, 4): 
+cell (3, 4): 5 food; 
+cell (4, 4): black hill; black ant of id 11, dir 0, food 0, state 2, resting 0
+cell (5, 4): black hill; black ant of id 12, dir 0, food 0, state 27, resting 0
+cell (6, 4): black hill; black ant of id 13, dir 0, food 0, state 2, resting 0
+cell (7, 4): black hill; black ant of id 14, dir 0, food 0, state 2, resting 0
+cell (8, 4): black hill; black ant of id 15, dir 0, food 0, state 2, resting 0
+cell (9, 4): rock
+cell (0, 5): rock
+cell (1, 5): red hill; red ant of id 16, dir 0, food 0, state 2, resting 0
+cell (2, 5): red hill; red ant of id 17, dir 0, food 0, state 2, resting 0
+cell (3, 5): red hill; red ant of id 18, dir 0, food 0, state 27, resting 0
+cell (4, 5): red hill; red ant of id 19, dir 0, food 0, state 2, resting 0
+cell (5, 5): red hill; red ant of id 20, dir 0, food 0, state 2, resting 0
+cell (6, 5): 5 food; 
+cell (7, 5): 
+cell (8, 5): 
+cell (9, 5): rock
+cell (0, 6): rock
+cell (1, 6): red hill; red ant of id 21, dir 0, food 0, state 2, resting 0
+cell (2, 6): red hill; red ant of id 22, dir 0, food 0, state 2, resting 0
+cell (3, 6): red hill; red ant of id 23, dir 0, food 0, state 2, resting 0
+cell (4, 6): red hill; red ant of id 24, dir 0, food 0, state 2, resting 0
+cell (5, 6): red hill; red ant of id 25, dir 0, food 0, state 7, resting 0
+cell (6, 6): red hill; red ant of id 26, dir 0, food 0, state 2, resting 0
+cell (7, 6): rock
+cell (8, 6): 
+cell (9, 6): rock
+cell (0, 7): rock
+cell (1, 7): red hill; red ant of id 27, dir 0, food 0, state 2, resting 0
+cell (2, 7): red hill; red ant of id 28, dir 0, food 0, state 27, resting 0
+cell (3, 7): red hill; red ant of id 29, dir 0, food 0, state 2, resting 0
+cell (4, 7): red hill; red ant of id 30, dir 0, food 0, state 2, resting 0
+cell (5, 7): red hill; red ant of id 31, dir 0, food 0, state 2, resting 0
+cell (6, 7): 
+cell (7, 7): rock
+cell (8, 7): 9 food; 
+cell (9, 7): rock
+cell (0, 8): rock
+cell (1, 8): 3 food; 
+cell (2, 8): 3 food; 
+cell (3, 8): 
+cell (4, 8): 
+cell (5, 8): 
+cell (6, 8): 
+cell (7, 8): 9 food; 
+cell (8, 8): 9 food; 
+cell (9, 8): rock
+cell (0, 9): rock
+cell (1, 9): rock
+cell (2, 9): rock
+cell (3, 9): rock
+cell (4, 9): rock
+cell (5, 9): rock
+cell (6, 9): rock
+cell (7, 9): rock
+cell (8, 9): rock
+cell (9, 9): rock
+
+After round 3...
+cell (0, 0): rock
+cell (1, 0): rock
+cell (2, 0): rock
+cell (3, 0): rock
+cell (4, 0): rock
+cell (5, 0): rock
+cell (6, 0): rock
+cell (7, 0): rock
+cell (8, 0): rock
+cell (9, 0): rock
+cell (0, 1): rock
+cell (1, 1): 9 food; 
+cell (2, 1): 9 food; 
+cell (3, 1): 
+cell (4, 1): 
+cell (5, 1): 
+cell (6, 1): 
+cell (7, 1): 3 food; 
+cell (8, 1): 3 food; 
+cell (9, 1): rock
+cell (0, 2): rock
+cell (1, 2): 9 food; 
+cell (2, 2): rock
+cell (3, 2): 
+cell (4, 2): black hill; black ant of id 0, dir 0, food 0, state 3, resting 0
+cell (5, 2): black hill; black ant of id 1, dir 0, food 0, state 3, resting 0
+cell (6, 2): black hill; black ant of id 2, dir 0, food 0, state 3, resting 0
+cell (7, 2): black hill; black ant of id 3, dir 0, food 0, state 3, resting 0
+cell (8, 2): black hill; black ant of id 4, dir 1, food 0, state 0, resting 0
+cell (9, 2): rock
+cell (0, 3): rock
+cell (1, 3): 
+cell (2, 3): rock
+cell (3, 3): black hill; black ant of id 5, dir 0, food 0, state 3, resting 0
+cell (4, 3): black hill; black ant of id 6, dir 5, food 0, state 0, resting 0
+cell (5, 3): black hill; black ant of id 7, dir 1, food 0, state 0, resting 0
+cell (6, 3): black hill; black ant of id 8, dir 0, food 0, state 28, resting 0
+cell (7, 3): black hill; black ant of id 9, dir 0, food 0, state 3, resting 0
+cell (8, 3): black hill; black ant of id 10, dir 1, food 0, state 0, resting 0
+cell (9, 3): rock
+cell (0, 4): rock
+cell (1, 4): 
+cell (2, 4): 
+cell (3, 4): 5 food; 
+cell (4, 4): black hill; black ant of id 11, dir 0, food 0, state 3, resting 0
+cell (5, 4): black hill; black ant of id 12, dir 0, food 0, state 28, resting 0
+cell (6, 4): black hill; black ant of id 13, dir 0, food 0, state 3, resting 0
+cell (7, 4): black hill; black ant of id 14, dir 0, food 0, state 24, resting 0
+cell (8, 4): black hill; black ant of id 15, dir 0, food 0, state 3, resting 0
+cell (9, 4): rock
+cell (0, 5): rock
+cell (1, 5): red hill; red ant of id 16, dir 0, food 0, state 24, resting 0
+cell (2, 5): red hill; red ant of id 17, dir 0, food 0, state 3, resting 0
+cell (3, 5): red hill; red ant of id 18, dir 0, food 0, state 28, resting 0
+cell (4, 5): red hill; red ant of id 19, dir 0, food 0, state 3, resting 0
+cell (5, 5): red hill; red ant of id 20, dir 0, food 0, state 24, resting 0
+cell (6, 5): 5 food; 
+cell (7, 5): 
+cell (8, 5): 
+cell (9, 5): rock
+cell (0, 6): rock
+cell (1, 6): red hill; red ant of id 21, dir 0, food 0, state 3, resting 0
+cell (2, 6): red hill; red ant of id 22, dir 0, food 0, state 3, resting 0
+cell (3, 6): red hill; red ant of id 23, dir 0, food 0, state 3, resting 0
+cell (4, 6): red hill; red ant of id 24, dir 0, food 0, state 3, resting 0
+cell (5, 6): red hill; red ant of id 25, dir 5, food 0, state 0, resting 0
+cell (6, 6): red hill; red ant of id 26, dir 0, food 0, state 3, resting 0
+cell (7, 6): rock
+cell (8, 6): 
+cell (9, 6): rock
+cell (0, 7): rock
+cell (1, 7): red hill; red ant of id 27, dir 0, food 0, state 3, resting 0
+cell (2, 7): red hill; red ant of id 28, dir 0, food 0, state 28, resting 0
+cell (3, 7): red hill; red ant of id 29, dir 0, food 0, state 3, resting 0
+cell (4, 7): red hill; red ant of id 30, dir 0, food 0, state 3, resting 0
+cell (5, 7): red hill; red ant of id 31, dir 0, food 0, state 24, resting 0
+cell (6, 7): 
+cell (7, 7): rock
+cell (8, 7): 9 food; 
+cell (9, 7): rock
+cell (0, 8): rock
+cell (1, 8): 3 food; 
+cell (2, 8): 3 food; 
+cell (3, 8): 
+cell (4, 8): 
+cell (5, 8): 
+cell (6, 8): 
+cell (7, 8): 9 food; 
+cell (8, 8): 9 food; 
+cell (9, 8): rock
+cell (0, 9): rock
+cell (1, 9): rock
+cell (2, 9): rock
+cell (3, 9): rock
+cell (4, 9): rock
+cell (5, 9): rock
+cell (6, 9): rock
+cell (7, 9): rock
+cell (8, 9): rock
+cell (9, 9): rock
+
+After round 4...
+cell (0, 0): rock
+cell (1, 0): rock
+cell (2, 0): rock
+cell (3, 0): rock
+cell (4, 0): rock
+cell (5, 0): rock
+cell (6, 0): rock
+cell (7, 0): rock
+cell (8, 0): rock
+cell (9, 0): rock
+cell (0, 1): rock
+cell (1, 1): 9 food; 
+cell (2, 1): 9 food; 
+cell (3, 1): 
+cell (4, 1): 
+cell (5, 1): 
+cell (6, 1): 
+cell (7, 1): 3 food; 
+cell (8, 1): 3 food; 
+cell (9, 1): rock
+cell (0, 2): rock
+cell (1, 2): 9 food; 
+cell (2, 2): rock
+cell (3, 2): 
+cell (4, 2): black hill; black ant of id 0, dir 0, food 0, state 4, resting 0
+cell (5, 2): black hill; black ant of id 1, dir 0, food 0, state 4, resting 0
+cell (6, 2): black hill; black ant of id 2, dir 0, food 0, state 4, resting 0
+cell (7, 2): black hill; black ant of id 3, dir 0, food 0, state 4, resting 0
+cell (8, 2): black hill; black ant of id 4, dir 1, food 0, state 1, resting 0
+cell (9, 2): rock
+cell (0, 3): rock
+cell (1, 3): 
+cell (2, 3): rock
+cell (3, 3): black hill; black ant of id 5, dir 0, food 0, state 9, resting 0
+cell (4, 3): black hill; black ant of id 6, dir 5, food 0, state 1, resting 0
+cell (5, 3): black hill; black ant of id 7, dir 1, food 0, state 1, resting 0
+cell (6, 3): black hill; black ant of id 8, dir 5, food 0, state 0, resting 0
+cell (7, 3): black hill; black ant of id 9, dir 0, food 0, state 9, resting 0
+cell (8, 3): black hill; black ant of id 10, dir 1, food 0, state 1, resting 0
+cell (9, 3): rock
+cell (0, 4): rock
+cell (1, 4): 
+cell (2, 4): 
+cell (3, 4): 5 food; 
+cell (4, 4): black hill; black ant of id 11, dir 0, food 0, state 4, resting 0
+cell (5, 4): black hill; black ant of id 12, dir 5, food 0, state 0, resting 0
+cell (6, 4): black hill; black ant of id 13, dir 0, food 0, state 4, resting 0
+cell (7, 4): black hill; black ant of id 14, dir 0, food 0, state 25, resting 0
+cell (8, 4): black hill; black ant of id 15, dir 0, food 0, state 9, resting 0
+cell (9, 4): rock
+cell (0, 5): rock
+cell (1, 5): red hill; red ant of id 16, dir 0, food 0, state 25, resting 0
+cell (2, 5): red hill; red ant of id 17, dir 0, food 0, state 4, resting 0
+cell (3, 5): red hill; red ant of id 18, dir 5, food 0, state 0, resting 0
+cell (4, 5): red hill; red ant of id 19, dir 0, food 0, state 9, resting 0
+cell (5, 5): red hill; red ant of id 20, dir 0, food 0, state 25, resting 0
+cell (6, 5): 5 food; 
+cell (7, 5): 
+cell (8, 5): 
+cell (9, 5): rock
+cell (0, 6): rock
+cell (1, 6): red hill; red ant of id 21, dir 0, food 0, state 4, resting 0
+cell (2, 6): red hill; red ant of id 22, dir 0, food 0, state 9, resting 0
+cell (3, 6): red hill; red ant of id 23, dir 0, food 0, state 4, resting 0
+cell (4, 6): red hill; red ant of id 24, dir 0, food 0, state 4, resting 0
+cell (5, 6): red hill; red ant of id 25, dir 5, food 0, state 1, resting 0
+cell (6, 6): red hill; red ant of id 26, dir 0, food 0, state 9, resting 0
+cell (7, 6): rock
+cell (8, 6): 
+cell (9, 6): rock
+cell (0, 7): rock
+cell (1, 7): red hill; red ant of id 27, dir 0, food 0, state 9, resting 0
+cell (2, 7): red hill; red ant of id 28, dir 5, food 0, state 0, resting 0
+cell (3, 7): red hill; red ant of id 29, dir 0, food 0, state 9, resting 0
+cell (4, 7): red hill; red ant of id 30, dir 0, food 0, state 4, resting 0
+cell (5, 7): red hill; red ant of id 31, dir 0, food 0, state 56, resting 0
+cell (6, 7): 
+cell (7, 7): rock
+cell (8, 7): 9 food; 
+cell (9, 7): rock
+cell (0, 8): rock
+cell (1, 8): 3 food; 
+cell (2, 8): 3 food; 
+cell (3, 8): 
+cell (4, 8): 
+cell (5, 8): 
+cell (6, 8): 
+cell (7, 8): 9 food; 
+cell (8, 8): 9 food; 
+cell (9, 8): rock
+cell (0, 9): rock
+cell (1, 9): rock
+cell (2, 9): rock
+cell (3, 9): rock
+cell (4, 9): rock
+cell (5, 9): rock
+cell (6, 9): rock
+cell (7, 9): rock
+cell (8, 9): rock
+cell (9, 9): rock
+
+After round 5...
+cell (0, 0): rock
+cell (1, 0): rock
+cell (2, 0): rock
+cell (3, 0): rock
+cell (4, 0): rock
+cell (5, 0): rock
+cell (6, 0): rock
+cell (7, 0): rock
+cell (8, 0): rock
+cell (9, 0): rock
+cell (0, 1): rock
+cell (1, 1): 9 food; 
+cell (2, 1): 9 food; 
+cell (3, 1): 
+cell (4, 1): 
+cell (5, 1): 
+cell (6, 1): 
+cell (7, 1): 3 food; 
+cell (8, 1): 3 food; 
+cell (9, 1): rock
+cell (0, 2): rock
+cell (1, 2): 9 food; 
+cell (2, 2): rock
+cell (3, 2): 
+cell (4, 2): black hill; black ant of id 0, dir 0, food 0, state 5, resting 0
+cell (5, 2): black hill; black ant of id 1, dir 0, food 0, state 5, resting 0
+cell (6, 2): black hill; black ant of id 2, dir 0, food 0, state 14, resting 0
+cell (7, 2): black hill; black ant of id 3, dir 0, food 0, state 5, resting 0
+cell (8, 2): black hill; black ant of id 4, dir 1, food 0, state 2, resting 0
+cell (9, 2): rock
+cell (0, 3): rock
+cell (1, 3): 
+cell (2, 3): rock
+cell (3, 3): black hill; black ant of id 5, dir 0, food 0, state 10, resting 0
+cell (4, 3): black hill; black ant of id 6, dir 5, food 0, state 2, resting 0
+cell (5, 3): black hill; black ant of id 7, dir 1, food 0, state 2, resting 0
+cell (6, 3): black hill; black ant of id 8, dir 5, food 0, state 1, resting 0
+cell (7, 3): black hill; black ant of id 9, dir 0, food 0, state 10, resting 0
+cell (8, 3): black hill; black ant of id 10, dir 1, food 0, state 2, resting 0
+cell (9, 3): rock
+cell (0, 4): rock
+cell (1, 4): 
+cell (2, 4): 
+cell (3, 4): 5 food; 
+cell (4, 4): black hill; black ant of id 11, dir 0, food 0, state 5, resting 0
+cell (5, 4): black hill; black ant of id 12, dir 5, food 0, state 1, resting 0
+cell (6, 4): black hill; black ant of id 13, dir 0, food 0, state 14, resting 0
+cell (7, 4): black hill; black ant of id 14, dir 0, food 0, state 26, resting 0
+cell (8, 4): black hill; black ant of id 15, dir 0, food 0, state 10, resting 0
+cell (9, 4): rock
+cell (0, 5): rock
+cell (1, 5): red hill; red ant of id 16, dir 0, food 0, state 26, resting 0
+cell (2, 5): red hill; red ant of id 17, dir 0, food 0, state 5, resting 0
+cell (3, 5): red hill; red ant of id 18, dir 5, food 0, state 1, resting 0
+cell (4, 5): red hill; red ant of id 19, dir 0, food 0, state 10, resting 0
+cell (5, 5): red hill; red ant of id 20, dir 0, food 0, state 26, resting 0
+cell (6, 5): 5 food; 
+cell (7, 5): 
+cell (8, 5): 
+cell (9, 5): rock
+cell (0, 6): rock
+cell (1, 6): red hill; red ant of id 21, dir 0, food 0, state 5, resting 0
+cell (2, 6): red hill; red ant of id 22, dir 0, food 0, state 10, resting 0
+cell (3, 6): red hill; red ant of id 23, dir 0, food 0, state 14, resting 0
+cell (4, 6): red hill; red ant of id 24, dir 0, food 0, state 5, resting 0
+cell (5, 6): red hill; red ant of id 25, dir 5, food 0, state 2, resting 0
+cell (6, 6): red hill; red ant of id 26, dir 0, food 0, state 10, resting 0
+cell (7, 6): rock
+cell (8, 6): 
+cell (9, 6): rock
+cell (0, 7): rock
+cell (1, 7): red hill; red ant of id 27, dir 0, food 0, state 10, resting 0
+cell (2, 7): red hill; red ant of id 28, dir 5, food 0, state 1, resting 0
+cell (3, 7): red hill; red ant of id 29, dir 0, food 0, state 10, resting 0
+cell (4, 7): red hill; red ant of id 30, dir 0, food 0, state 14, resting 0
+cell (5, 7): red hill; red ant of id 31, dir 0, food 0, state 57, resting 0
+cell (6, 7): 
+cell (7, 7): rock
+cell (8, 7): 9 food; 
+cell (9, 7): rock
+cell (0, 8): rock
+cell (1, 8): 3 food; 
+cell (2, 8): 3 food; 
+cell (3, 8): 
+cell (4, 8): 
+cell (5, 8): 
+cell (6, 8): 
+cell (7, 8): 9 food; 
+cell (8, 8): 9 food; 
+cell (9, 8): rock
+cell (0, 9): rock
+cell (1, 9): rock
+cell (2, 9): rock
+cell (3, 9): rock
+cell (4, 9): rock
+cell (5, 9): rock
+cell (6, 9): rock
+cell (7, 9): rock
+cell (8, 9): rock
+cell (9, 9): rock
+
+After round 6...
+cell (0, 0): rock
+cell (1, 0): rock
+cell (2, 0): rock
+cell (3, 0): rock
+cell (4, 0): rock
+cell (5, 0): rock
+cell (6, 0): rock
+cell (7, 0): rock
+cell (8, 0): rock
+cell (9, 0): rock
+cell (0, 1): rock
+cell (1, 1): 9 food; 
+cell (2, 1): 9 food; 
+cell (3, 1): 
+cell (4, 1): 
+cell (5, 1): 
+cell (6, 1): 
+cell (7, 1): 3 food; 
+cell (8, 1): 3 food; 
+cell (9, 1): rock
+cell (0, 2): rock
+cell (1, 2): 9 food; 
+cell (2, 2): rock
+cell (3, 2): 
+cell (4, 2): black hill; black ant of id 0, dir 0, food 0, state 23, resting 0
+cell (5, 2): black hill; black ant of id 1, dir 0, food 0, state 19, resting 0
+cell (6, 2): black hill; black ant of id 2, dir 0, food 0, state 15, resting 0
+cell (7, 2): black hill; black ant of id 3, dir 0, food 0, state 19, resting 0
+cell (8, 2): black hill; black ant of id 4, dir 1, food 0, state 3, resting 0
+cell (9, 2): rock
+cell (0, 3): rock
+cell (1, 3): 
+cell (2, 3): rock
+cell (3, 3): black hill; black ant of id 5, dir 0, food 0, state 11, resting 0
+cell (4, 3): black hill; black ant of id 6, dir 5, food 0, state 24, resting 0
+cell (5, 3): black hill; black ant of id 7, dir 1, food 0, state 3, resting 0
+cell (6, 3): black hill; black ant of id 8, dir 5, food 0, state 2, resting 0
+cell (7, 3): black hill; black ant of id 9, dir 0, food 0, state 11, resting 0
+cell (8, 3): black hill; black ant of id 10, dir 1, food 0, state 3, resting 0
+cell (9, 3): rock
+cell (0, 4): rock
+cell (1, 4): 
+cell (2, 4): 
+cell (3, 4): 5 food; 
+cell (4, 4): black hill; black ant of id 11, dir 0, food 0, state 23, resting 0
+cell (5, 4): black hill; black ant of id 12, dir 5, food 0, state 2, resting 0
+cell (6, 4): black hill; black ant of id 13, dir 0, food 0, state 70, resting 0
+cell (7, 4): black hill; black ant of id 14, dir 0, food 0, state 29, rest
