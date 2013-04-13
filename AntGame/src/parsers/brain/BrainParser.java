@@ -83,13 +83,12 @@ public class BrainParser {
 				}
 			}
 			
-			else if(tokenType.equals(";")) {
+			else if(tokenType.equals("comment")) {
 				// do nothing with comments
 			}
 			
-			else {
-				// TODO want this to throw error but also want to handle comments need to change lexer slighly
-				//throw new InvalidInputException("unrecognised input: " + tokenType);
+			else {				
+				throw new SyntacticallyInvalidInputException("unrecognised input: " + tokenType);
 			}
 			
 			i++;
