@@ -19,7 +19,7 @@ public class BrainDebugTest {
 	public void run() {
 		
 		try {
-			AntBrain testBrain = AntBrainLoader.load("SimpleBrain.brain");
+			AntBrain testBrain = AntBrainLoader.load("tinyBrain.brain");
 		} catch (SyntacticallyInvalidInputException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

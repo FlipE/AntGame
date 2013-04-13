@@ -140,9 +140,6 @@ public class AntWorldView implements View {
 							batch.draw(blackAnt, xCoord, yCoord);
 						}
 					}
-					else if(clear.senseFoeMarker(Config.BLACK_ANT) || clear.senseFoeMarker(Config.BLACK_ANT)) {
-						batch.draw(trailCell, xCoord, yCoord);
-					}
 					else if(clear.numFood() > 0) {
 						batch.draw(foodCell, xCoord, yCoord);
 					}
@@ -151,6 +148,9 @@ public class AntWorldView implements View {
 					}
 					else if(c instanceof RedAntHill) {
 						batch.draw(redAntHill, xCoord, yCoord);
+					}
+					else if(clear.senseFoeMarker(Config.BLACK_ANT) || clear.senseFoeMarker(Config.RED_ANT)) {
+						batch.draw(trailCell, xCoord, yCoord);
 					}
 					else {
 						batch.draw(clearCell, xCoord, yCoord);

@@ -77,7 +77,7 @@ public class AntBrainLoader implements Runnable {
 					//System.out.println(brain);
 				}
 				catch (SyntacticallyInvalidInputException e) {
-					throw new SyntacticallyInvalidInputException("The input is not syntactically valid.");
+					throw new SyntacticallyInvalidInputException("The input is not syntactically valid; " + e.getMessage());
 				}
 			}
 			catch (LexicallyInvalidInputException e) {
@@ -85,7 +85,7 @@ public class AntBrainLoader implements Runnable {
 				lexer.yyclose();
 				
 				// This happens when the input is not in the language
-				throw new SyntacticallyInvalidInputException("The input is not lexically valid.");
+				throw new SyntacticallyInvalidInputException("The input is not lexically valid; " + e.getMessage());
 			}
 			catch (IOException e) {
 				// close stream here to avoid resource leak when exception is caught
@@ -114,7 +114,7 @@ public class AntBrainLoader implements Runnable {
 	public void run() {
 		
 		try {
-			AntBrain brain = this.load(this.filepath);
+			AntBrain brain = AntBrainLoader.load(this.filepath);
 			this.notifyBrainLoadComplete(brain);
 		}
 		catch(SyntacticallyInvalidInputException e) {
