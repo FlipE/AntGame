@@ -34,14 +34,20 @@ public class CompareLog {
 			String theirs = "";
 			int lineNum = 0;
 			
-			while ((ours = ourLogBuff.readLine()) != null && (theirs = logBuff.readLine()) != null) {
-				if(!ours.equals(theirs)) {
+			while ((ours = ourLogBuff.readLine()) != null 
+					&& (theirs = logBuff.readLine()) != null
+					&& ours.equals(theirs)) {
+				
+				/*if(!ours.equals(theirs)) {
 					System.out.println("Line Num: " + lineNum);
 					System.out.println("Ours:     " + ours);
 					System.out.println("Theirs:   " + theirs);
-				}
+				}*/
 				lineNum += 1;
-			}			
+			}
+			System.out.println("Line Num: " + lineNum);
+			System.out.println("Ours:     " + ours);
+			System.out.println("Theirs:   " + theirs);
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

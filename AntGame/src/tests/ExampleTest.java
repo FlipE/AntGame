@@ -27,9 +27,8 @@ public class ExampleTest {
 
 	public static void main(String[] args) {
 		try {
-			File f = new File ("ourLog.txt");
-			BufferedWriter fw = Files.newBufferedWriter(f.toPath(), Charset.forName("UTF-8"), StandardOpenOption.CREATE);
 			
+			int seed = 12345;
 			
 			AntBrain redBrain = AntBrainLoader.load("sample.brain");
 			AntBrain blackBrain = AntBrainLoader.load("sample.brain");
@@ -37,24 +36,39 @@ public class ExampleTest {
 			Cell[][] cells = SimpleWorldLoader.load("tiny1.world");
 			AntWorld world = new AntWorld(cells, redBrain, blackBrain);
 			
-			StringBuffer buff = new StringBuffer(0);
+			StringBuffer log = new StringBuffer();
 			
-			buff.append("random seed: 12345\r\n");
-			for (int i=0; i<10; i++){
-				buff.append("\r\nAfter round "+i+"...\r\n");
-				buff.append(world.printWorld());
+			log.append("random seed: " + seed + "\r\n");
+			for (int i=0; i<1000; i++){
+				log.append("\r\nAfter round "+i+"...\r\n");
+				log.append(world.printWorld());
 				world.update();
 			}
-			fw.write(buff.toString(), 0, buff.toString().length());
-			System.out.print(buff);
+			
+			// save the log
+			File f = new File ("ourLog.txt");
+			BufferedWriter fw = Files.newBufferedWriter(f.toPath(), Charset.forName("UTF-8"), StandardOpenOption.CREATE);
+			
+			String content = log.toString();
+			String[] lines = content.split("\r\n|\n|\r");
+			
+			for(String line : lines) {
+				fw.write(line, 0, line.length());
+				fw.newLine();
+			}
+			
+			fw.close();
+			
+			// echo out the log
+			System.out.print(content);
 		}
 		catch (InvalidWorldException e) {
 			e.printStackTrace();
 		}
 		catch (SyntacticallyInvalidInputException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (IOException e) {
 			e.printStackTrace();
 		}		
 	}

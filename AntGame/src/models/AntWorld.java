@@ -517,8 +517,8 @@ public class AntWorld implements Model {
 								buff.append(myCell.numFood() + " food; ");
 							}
 					}
-					if (myCell.senseFoeMarker(Config.BLACK_ANT)){
-						buff.append("black marks : ");
+					if (myCell.senseFoeMarker(Config.RED_ANT)){
+						buff.append("black marks: ");
 						for (int x = 0; x <= 5; x++){
 							if (myCell.senseBlackTrail(x)){
 								buff.append(x);
@@ -526,8 +526,8 @@ public class AntWorld implements Model {
 						}
 						buff.append("; ");
 					}
-					if (myCell.senseFoeMarker(Config.RED_ANT)){
-						buff.append("red marks : ");
+					if (myCell.senseFoeMarker(Config.BLACK_ANT)){
+						buff.append("red marks: ");
 						for (int x = 0; x <= 5; x++){
 							if (myCell.senseRedTrail(x)){
 								buff.append(x);
