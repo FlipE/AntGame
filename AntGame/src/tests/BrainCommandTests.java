@@ -376,8 +376,9 @@ public class BrainCommandTests {
 			assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().getResting() == i);
 			world.update();	//rest
 		}
-		world.update();	//move
 		//System.out.println(world);
+		//world.update();	//move
+		//
 		assertTrue(((ClearCell)world.getWorld()[7][4]).getAnt().getDirection() == 0);
 		world.update();	//drop
 		//System.out.println(world);
@@ -385,17 +386,36 @@ public class BrainCommandTests {
 		assertFalse(((ClearCell)world.getWorld()[7][4]).getAnt().hasFood());	//ant has food
 	}
 	
-	@Test
+	@Test		//wrong !
 	public void Flip() throws Exception {
-		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/movePickupMoveDrop.brain");
+		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/flip.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
-		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and food.world");
+		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
 		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
-		//random sequence 0,0,1,0
+		//random sequence 0,0,1,0,0,1
+		RandomGen r = new RandomGen(1234);
+		System.out.println(r.randomint(2));
+		System.out.println(r.randomint(2));
+		System.out.println(r.randomint(2));
+		System.out.println(r.randomint(2));
+		System.out.println(r.randomint(2));
+		System.out.println(r.randomint(2));
 		
-		
-		
-
+		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
+		world.update();
+		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 6);
+		world.update();
+		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 3);
+		world.update();
+		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 3);
+		world.update();
+		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 6);
+		world.update();
+		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 3);
+		world.update();
+		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 3);
+		world.update();
+		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 3);
 	}
 	
 }
