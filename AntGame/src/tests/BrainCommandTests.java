@@ -393,13 +393,13 @@ public class BrainCommandTests {
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
 		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
 		//random sequence 0,0,1,0,0,1
-		RandomGen r = new RandomGen(1234);
-		System.out.println(r.randomint(2));
-		System.out.println(r.randomint(2));
-		System.out.println(r.randomint(2));
-		System.out.println(r.randomint(2));
-		System.out.println(r.randomint(2));
-		System.out.println(r.randomint(2));
+//		RandomGen r = new RandomGen(1234);
+//		System.out.println(r.randomint(2));
+//		System.out.println(r.randomint(2));
+//		System.out.println(r.randomint(2));
+//		System.out.println(r.randomint(2));
+//		System.out.println(r.randomint(2));
+//		System.out.println(r.randomint(2));
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
@@ -418,4 +418,43 @@ public class BrainCommandTests {
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 3);
 	}
 	
+	@Test
+	public void MoveMark() throws Exception {
+		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/moveMark.brain");
+		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
+		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		world.update();
+		assertTrue(world.getCells()[6][4].isOccupied());
+		world.update();
+		assertTrue(((ClearCell)world.getCells()[6][4]).senseRedTrail(1));
+	}
+	
+	@Test
+	public void MoveMarkUnmark() throws Exception {
+		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/moveMarkUnmark.brain");
+		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
+		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		world.update();
+		assertTrue(world.getCells()[6][4].isOccupied());
+		world.update();
+		assertTrue(((ClearCell)world.getCells()[6][4]).senseRedTrail(1));
+		world.update();
+		assertFalse(((ClearCell)world.getCells()[6][4]).senseRedTrail(1));
+	}
+	
+	@Test
+	public void MoveMarkSense() throws Exception {
+		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/moveMarkSense.brain");
+		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
+		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		world.update();
+		assertTrue(world.getCells()[6][4].isOccupied());
+		world.update();
+		assertTrue(((ClearCell)world.getCells()[6][4]).senseRedTrail(1));
+		world.update();
+		assertTrue(((ClearCell)world.getCells()[6][4]).getAnt().getState() == 9);
+	}
 }
