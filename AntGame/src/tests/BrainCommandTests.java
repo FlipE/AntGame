@@ -157,10 +157,11 @@ public class BrainCommandTests {
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);
 		world.update();	//turn Left
-		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 3);
+		world.update();	//turn Left
+		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 4);
 		world.update();	//move
 		assertTrue(world.getWorld()[4][3].isOccupied());	//successfully moved
-		assertTrue(((ClearCell)world.getWorld()[4][3]).getAnt().getDirection() == 3);	//direction has not changed
+		assertTrue(((ClearCell)world.getWorld()[4][3]).getAnt().getDirection() == 4);	//direction has not changed
 	}
 	
 	@Test
@@ -172,40 +173,51 @@ public class BrainCommandTests {
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);
 		world.update();	//turn Left
-		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 2);
+		world.update();	//turn Left
+		world.update();	//turn Left
+		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 3);
 		world.update();	//move
 		assertTrue(world.getWorld()[4][4].isOccupied());	//successfully moved
-		assertTrue(((ClearCell)world.getWorld()[4][4]).getAnt().getDirection() == 2);	//direction has not changed
+		assertTrue(((ClearCell)world.getWorld()[4][4]).getAnt().getDirection() == 3);	//direction has not changed
 	}
 	
 	@Test
 	public void TurnLeft4move() throws Exception {
-		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/turnLeft3move.brain");
+		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/turnLeft4move.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
 		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);
 		world.update();	//turn Left
-		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 1);
+		world.update();	//turn Left
+		world.update();	//turn Left
+		world.update();	//turn Left
+		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 2);
+		//System.out.println(world);
 		world.update();	//move
+		//System.out.println(world);
 		assertTrue(world.getWorld()[4][5].isOccupied());	//successfully moved
-		assertTrue(((ClearCell)world.getWorld()[4][5]).getAnt().getDirection() == 1);	//direction has not changed
+		assertTrue(((ClearCell)world.getWorld()[4][5]).getAnt().getDirection() == 2);	//direction has not changed
 	}
 	
 	@Test
 	public void TurnLeft5move() throws Exception {
-		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/turnLeft3move.brain");
+		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/turnLeft5move.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
 		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);
 		world.update();	//turn Left
-		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);	//full 360
+		world.update();	//turn Left
+		world.update();	//turn Left
+		world.update();	//turn Left
+		world.update();	//turn Left
+		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 1);	//full 360
 		world.update();	//move
 		assertTrue(world.getWorld()[5][5].isOccupied());	//successfully moved
-		assertTrue(((ClearCell)world.getWorld()[5][5]).getAnt().getDirection() == 0);	//direction has not changed
+		assertTrue(((ClearCell)world.getWorld()[5][5]).getAnt().getDirection() == 1);	//direction has not changed
 	}
 	
 	@Test

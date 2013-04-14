@@ -30,6 +30,7 @@ public class Ant implements Model {
 	private int direction;
 	private Position position;
 	private AntBrain brain;
+	private int lastUpdated;
 	
 	/**
 	 * 
@@ -45,6 +46,7 @@ public class Ant implements Model {
 			this.brain = world.getRedBrain();
 		}
 		this.state = 0;
+		this.lastUpdated = -1;
 	}
 	
 	/* (non-Javadoc)
@@ -57,6 +59,9 @@ public class Ant implements Model {
 		if(this.resting > 0) {
 			this.resting -= 1;
 		}
+		
+		// set the last updated to the current round
+		this.lastUpdated = this.world.getRoundNum();
 		
 		//System.out.println("updating ant " + this.id);
 		try {
@@ -384,4 +389,12 @@ public class Ant implements Model {
 	public void setPosition(Position position) {
 		this.position.set(position);
 	}
+
+	/**
+	 * @return the lastUpdated
+	 */
+	public int getLastupdated() {
+		return this.lastUpdated;
+	}
+	
 }

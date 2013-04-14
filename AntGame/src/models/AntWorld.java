@@ -94,7 +94,9 @@ public class AntWorld implements Model {
 					if(c.isOccupied()) {
 						ClearCell clearCell = (ClearCell) c;
 						Ant a = clearCell.getAnt();
-						a.update();
+						if(a.getLastupdated() < this.roundNum) {
+							a.update();
+						}
 					}
 				}
 			}
