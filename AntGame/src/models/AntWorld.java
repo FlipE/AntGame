@@ -28,6 +28,10 @@ public class AntWorld implements Model {
 	private List<Ant> ants;
 	private int roundNum;
 	private int redScore;
+	public Cell[][] getWorld() {
+		return world;
+	}
+
 	private int blackScore;
 	private AntBrain redBrain;
 	private AntBrain blackBrain;
