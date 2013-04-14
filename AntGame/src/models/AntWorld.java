@@ -302,10 +302,8 @@ public class AntWorld implements Model {
 		try {
 			Cell cell = this.world[x][y];
 			if(cell instanceof ClearCell) {
-				if(cell.isOccupied()) {
-					ClearCell clearCell = (ClearCell) cell;
-					return clearCell.numFood() > 0;
-				}
+				ClearCell clearCell = (ClearCell) cell;
+				return clearCell.numFood() > 0;
 			}
 		}
 		catch (ArrayIndexOutOfBoundsException e) {

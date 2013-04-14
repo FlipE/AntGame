@@ -99,7 +99,7 @@ public class BrainCommandTests {
 		world.update();		//move
 		assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().getPosition().getX() == 6);
 		assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().getPosition().getY() == 4);
-		for (int i = 13; i > 0; i--){
+		for (int i = 14; i > 0; i--){
 			assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().getResting() == i);
 			world.update();	//rest
 		}
@@ -117,7 +117,7 @@ public class BrainCommandTests {
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
-		assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().getState() == 3);
+		assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().getState() == 0);
 	}
 	
 	@Test		//bug found does not switch to failed state !
@@ -269,7 +269,7 @@ public class BrainCommandTests {
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
-		//System.out.println(world.printWorld());
+		System.out.println(world);
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 1);
 	}
 	
