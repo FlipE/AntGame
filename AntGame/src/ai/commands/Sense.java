@@ -17,7 +17,6 @@ public class Sense extends AbstractAntCommand {
 	private int trueState;
 	private int falseState;
 	private int condition;
-	private int markType;
 	
 	/**
 	 * @param direction
@@ -37,7 +36,7 @@ public class Sense extends AbstractAntCommand {
 	 * @see ai.commands.AbstractAntCommand#execute()
 	 */
 	@Override
-	public int execute() throws ReceiverNotSetException {
+	public int execute() throws ReceiverNotSetException, Exception {
 		return super.receiver.sense(direction, trueState, falseState, condition);
 	}
 

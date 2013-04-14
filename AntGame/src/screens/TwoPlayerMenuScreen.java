@@ -56,7 +56,6 @@ public class TwoPlayerMenuScreen extends AbstractScreen {
 		this.playerViews = new Array<PlayerInfoView>();
 		this.worldViews = new Array<WorldInfoView>();
 		this.matchManager = MatchManager.getInstance();
-		this.initialise();
 	}
 
 	private void initialise() {
@@ -169,6 +168,12 @@ public class TwoPlayerMenuScreen extends AbstractScreen {
 	@Override
 	public void show() {
 
+		// reset the match manager
+		this.matchManager.reset();
+		
+		// initialise the screen
+		this.initialise();
+		
 		// set the stage as the input processor
 		Gdx.input.setInputProcessor(stage);
 

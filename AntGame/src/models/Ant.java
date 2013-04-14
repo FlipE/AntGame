@@ -1,10 +1,10 @@
 package models;
 
-import exceptions.ReceiverNotSetException;
 import util.Position;
 import ai.AntBrain;
 import ai.commands.AntCommand;
 import antgame.Config;
+import exceptions.ReceiverNotSetException;
 
 /**
  * Ant.java
@@ -74,6 +74,9 @@ public class Ant implements Model {
 			// the command implementation is wrong then it will break here.
 			e.printStackTrace();
 		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}		
 	}
 	
 	/**
@@ -254,14 +257,18 @@ public class Ant implements Model {
 	 * @param direction
 	 * @param nextState
 	 * @return
+	 * @throws Exception 
 	 */
-	public int turn(int direction, int nextState) {
+	public int turn(int direction, int nextState) throws Exception {
 		
 		if(direction == Config.TURN_LEFT) {
 			this.direction = turnLeft(this.direction);
 		}
 		else if(direction == Config.TURN_RIGHT) {
 			this.direction = turnRight(this.direction);
+		}
+		else {
+			throw new Exception("unknown direction: " + direction);
 		}
 		
 		return nextState;
@@ -294,8 +301,7 @@ public class Ant implements Model {
 			Position destination = this.position.getPositionInDirection(this.direction);
 			
 			// try to move in that direction
-			if(this.world.move(this.position.getX(), this.position.getY(), destination.getX(), destination.getY())) {
-				this.position.set(destination);
+			if(this.world.move(this.position.getX(), this.position.getY(), destination.getX(), destination.getY())) {				
 				this.resting = Config.MOVEMENT_RESTING_PERIOD;
 				return successState;
 			}
@@ -316,52 +322,66 @@ public class Ant implements Model {
 	}
 
 	/**
-	 * @return
+	 * Get this ant's colour this should be one of either
+	 * {@link red#Config.RED_ANT} or {@link black#Config.BLACK_ANT}.
+	 * 
+	 * @return either {@link red#Config.RED_ANT} or {@link black#Config.BLACK_ANT}.
 	 */
 	public int getColor() {
 		return this.color;
 	}
 
 	/**
-	 * @return
+	 * Check to see if this ant is carrying any food.
+	 * 
+	 * @return true if this ant has food, false otherwise.
 	 */
 	public boolean hasFood() {
 		return this.hasFood;
 	}
-	public int getFood(){
-		if (hasFood){
-			return 1;
-		}
-		else{
-			return 0;
-		}
-	}
-	
-	public String toString1() {
-		int food = 0;
-		if(hasFood()){food = 1;}
-		return color +" ant";
-	}
-	public String toString2() {
-		int food = 0;
-		if(hasFood()){food = 1;}
-		return "dir"+ direction+ ", food "+ food + ", state "+ state + ", resting " + resting;
-		//red ant of id 28, dir 5, food 0, state 27, resting 0
-	}
 
+	/**
+	 * Get the number of rounds this ant has left to rest before it can move again.
+	 * 
+	 * @return the number of rounds this ant has left to rest before it can move again.
+	 */
 	public int getResting() {
 		return resting;
 	}
 
+	/**
+	 * Get this ant's current state
+	 * 
+	 * @return the ant's current state
+	 */
 	public int getState() {
 		return state;
 	}
 
+	/**
+	 * Get the ant's current direction.
+	 * 
+	 * @return the ant's current direction.
+	 */
 	public int getDirection() {
 		return direction;
 	}
 
+	/**
+	 * Get the ant's current position.
+	 * 
+	 * @return the ant's current position.
+	 */
 	public Position getPosition() {
 		return position;
+	}
+
+	/**
+	 * update this ant's position to the new given position.
+	 * 
+	 * @param position the new position of this ant
+	 */
+	public void setPosition(Position position) {
+		this.position.set(position);
 	}
 }

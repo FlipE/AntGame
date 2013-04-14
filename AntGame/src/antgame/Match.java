@@ -58,7 +58,7 @@ public class Match {
 		this.name = name;
 		this.isFinished = false;
 		this.listeners = new ArrayList<MatchListener>();
-		this.matchSpeed = 10;
+		this.matchSpeed = 100;
 	}
 
 	public void update() {
@@ -113,5 +113,14 @@ public class Match {
 			winner = redPlayer.getId();
 		}		
 		return winner;
+	}
+	
+	/**
+	 * Return the current round number.
+	 * 
+	 * @return the current round number.
+	 */
+	public int getRoundNum() {
+		return this.world.getRoundNum();
 	}
 }

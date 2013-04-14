@@ -17,8 +17,7 @@ public interface AntCommand {
 	/**
 	 * Set the receiver that the command should be executed on.
 	 * 
-	 * @param receiver
-	 * @return 
+	 * @param receiver the receiver of the command
 	 */
 	public void setReceiver(Ant receiver);
 	
@@ -29,9 +28,10 @@ public interface AntCommand {
 	
 	/**
 	 * Execute a command on the receiver. the receiver must first be set
-	 * 
 	 * @throws ReceiverNotSetException if the receiver is not set
+	 * @throws Exception
+	 * 
 	 * @return the next command index to execute
 	 */
-	public int execute() throws ReceiverNotSetException;
+	public int execute() throws ReceiverNotSetException, Exception;
 }

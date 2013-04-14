@@ -337,7 +337,7 @@ public class BrainCommandTests {
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
-		System.out.println(world.printWorld());
+		System.out.println(world);
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 3);
 	}
 	

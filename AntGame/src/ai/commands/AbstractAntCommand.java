@@ -18,8 +18,7 @@ public abstract class AbstractAntCommand implements AntCommand {
 	
 	/**
 	 * Set the receiver that the command should be executed on.
-	 * @param a
-	 * @return 
+	 * @param receiver the receiver of the command.
 	 */
 	@Override
 	public void setReceiver(Ant receiver) {
@@ -37,10 +36,11 @@ public abstract class AbstractAntCommand implements AntCommand {
 	/**
 	 * Execute a command on the receiver. the receiver must first be set
 	 * @throws ReceiverNotSetException if the receiver is not set
+	 * @throws Exception
 	 * @return the next command index to execute
 	 */
 	@Override
-	public abstract int execute() throws ReceiverNotSetException;
+	public abstract int execute() throws ReceiverNotSetException, Exception;
 	
 	@Override
 	public String toString() {

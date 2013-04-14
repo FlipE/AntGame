@@ -30,8 +30,9 @@ public class Turn extends AbstractAntCommand {
 	 * @see ai.commands.AbstractAntCommand#execute()
 	 */
 	@Override
-	public int execute() throws ReceiverNotSetException {
-		return super.receiver.turn(direction, nextState);
+	public int execute() throws ReceiverNotSetException, Exception {
+		int state = super.receiver.turn(direction, nextState);
+		return state;
 	}
 
 	@Override

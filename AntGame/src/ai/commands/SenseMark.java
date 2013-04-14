@@ -36,7 +36,7 @@ public class SenseMark extends AbstractAntCommand {
 	 * @see ai.commands.AbstractAntCommand#execute()
 	 */
 	@Override
-	public int execute() throws ReceiverNotSetException {
+	public int execute() throws ReceiverNotSetException, Exception {
 		return super.receiver.senseMark(direction, trueState, falseState, type);
 	}
 

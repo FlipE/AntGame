@@ -27,7 +27,7 @@ public class DropFood extends AbstractAntCommand {
 	 * @see ai.commands.AbstractAntCommand#execute()
 	 */
 	@Override
-	public int execute() throws ReceiverNotSetException {
+	public int execute() throws ReceiverNotSetException, Exception {
 		return super.receiver.dropFood(nextState);
 	}
 

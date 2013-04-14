@@ -119,5 +119,15 @@ public class MatchManager {
 		this.matchIndex += 1;
 		return this.matchQueue.get(this.matchIndex);
 	}
+
+	/**
+	 * 
+	 */
+	public void reset() {
+		this.players = new Array<PlayerInfo>();
+		this.worlds = new Array<WorldInfo>();
+		this.matchQueue = new Array<Match>();
+		this.matchIndex = 0;
+	}
 	
 }

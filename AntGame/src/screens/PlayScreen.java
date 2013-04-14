@@ -5,6 +5,7 @@ package screens;
 
 import listeners.MatchListener;
 import views.AntWorldView;
+import views.HeadsUpDisplay;
 import views.View;
 import antgame.AntGame;
 import antgame.Match;
@@ -26,6 +27,7 @@ public class PlayScreen extends AbstractScreen implements MatchListener {
 
 	private Match match;
 	private View worldView;
+	private View HUD;
 	private MatchManager matchManager;
 	private Array<Match> matches;
 	
@@ -71,8 +73,14 @@ public class PlayScreen extends AbstractScreen implements MatchListener {
 			// this sets the current match to 
 			match = this.matches.get(0);
 			
+			// register this screen as an observer of the match
+			match.addListener(this);
+			
 			// create the new view giving it the world
 			worldView = new AntWorldView(match.getCells(), stage);
+			
+			// setup the hud
+			this.HUD = new HeadsUpDisplay(super.stage, match);
 		}
 		catch (Exception e) {
 			// if the matche manager can't create any games, return to the main menu
@@ -94,6 +102,9 @@ public class PlayScreen extends AbstractScreen implements MatchListener {
 		
 		// render the world
 		worldView.draw();
+		
+		// render the hud
+		this.HUD.draw();
 	}
 
 	private void update(float delta) {
@@ -140,6 +151,7 @@ public class PlayScreen extends AbstractScreen implements MatchListener {
 		}
 		else {
 			// show final scores
+			game.setTwoPlayerMenuScreen();
 		}
 	}
 

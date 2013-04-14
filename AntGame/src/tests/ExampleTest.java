@@ -41,7 +41,7 @@ public class ExampleTest {
 			log.append("random seed: " + seed + "\r\n");
 			for (int i=0; i<1000; i++){
 				log.append("\r\nAfter round "+i+"...\r\n");
-				log.append(world.printWorld());
+				log.append(world);
 				world.update();
 			}
 			

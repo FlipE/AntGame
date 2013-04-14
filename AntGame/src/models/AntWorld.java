@@ -28,10 +28,6 @@ public class AntWorld implements Model {
 	private List<Ant> ants;
 	private int roundNum;
 	private int redScore;
-	public Cell[][] getWorld() {
-		return world;
-	}
-
 	private int blackScore;
 	private AntBrain redBrain;
 	private AntBrain blackBrain;
@@ -46,7 +42,7 @@ public class AntWorld implements Model {
 		this.redBrain = redBrain;
 		this.blackBrain = blackBrain;
 		this.ants = new ArrayList<Ant>();
-		this.roundNum = 1;
+		this.roundNum = 0;
 		this.redScore = 0;
 		this.blackScore = 0;
 		// TODO some way of making the seeds different for games but somehow saveable?
@@ -71,7 +67,7 @@ public class AntWorld implements Model {
 					AntHill b = (AntHill) c;
 					try {
 						Ant a = b.spawnAnt(this);
-						this.ants.add(a);
+						//this.ants.add(a);
 					}
 					catch (CellOccupiedException e) {
 						// this shouldn't happen but if the ant hill 
@@ -135,10 +131,16 @@ public class AntWorld implements Model {
 			// return failure if destination is occupied or source is not.
 			// failing here stops a bug where an ant is removed from a cell and can't
 			// be placed in an occupied cell.
-			if (to.isOccupied() || !from.isOccupied()) {
+			if(to instanceof RockyCell) {
 				return false;
 			}
-
+			if (to.isOccupied()) {
+				return false;
+			}
+			if (!from.isOccupied()) {
+				return false;				
+			}
+			
 			try {
 				Ant a = from.leave();
 				to.arrive(a);
@@ -150,7 +152,6 @@ public class AntWorld implements Model {
 				assert (to.isOccupied());
 
 				// TODO check for surrounded ants				
-				
 				return true;
 			}
 			catch (AntNotFoundException e) {				
@@ -491,67 +492,71 @@ public class AntWorld implements Model {
 		return this.blackScore;
 	}
 	
+	public Cell[][] getWorld() {
+		return this.world;
+	}
+	
 	// TODO ants that die
 	
-	
-	public String printWorld(){
+	@Override
+	public String toString(){
 		int antID = 0;
-		StringBuffer buff = new StringBuffer();
+		StringBuffer buffer = new StringBuffer();
 		for(int i = 0; i < world.length; i++){
 			for (int j = 0; j < world[0].length; j++){
-				buff.append("cell ("+j+", "+i+"): ");
+				buffer.append("cell ("+j+", "+i+"): ");
 				Cell cell = world[j][i];
 				String type = cell.getClass().getName();
 				if (type.equals("cells.RockyCell")){
-					buff.append("rock");
+					buffer.append("rock");
 				}
 				else{
 					ClearCell myCell =(ClearCell) cell;
 					if (type.equals("cells.BlackAntHill")){
-						buff.append("black hill; ");
+						buffer.append("black hill; ");
 					}
 					else if (type.equals("cells.RedAntHill")){
-						buff.append("red hill; ");
+						buffer.append("red hill; ");
 					}
 					else if (type.equals("cells.ClearCell")){
 						
 						if (myCell.numFood() == 0){
 							}
 							else{
-								buff.append(myCell.numFood() + " food; ");
+								buffer.append(myCell.numFood() + " food; ");
 							}
 					}
 					if (myCell.senseFoeMarker(Config.RED_ANT)){
-						buff.append("black marks: ");
+						buffer.append("black marks: ");
 						for (int x = 0; x <= 5; x++){
 							if (myCell.senseBlackTrail(x)){
-								buff.append(x);
+								buffer.append(x);
 							}
 						}
-						buff.append("; ");
+						buffer.append("; ");
 					}
 					if (myCell.senseFoeMarker(Config.BLACK_ANT)){
-						buff.append("red marks: ");
+						buffer.append("red marks: ");
 						for (int x = 0; x <= 5; x++){
 							if (myCell.senseRedTrail(x)){
-								buff.append(x);
+								buffer.append(x);
 							}
 						}
-						buff.append("; ");
+						buffer.append("; ");
 					}
 					if (cell.isOccupied()&&type!="cells.RockyCell"){
 						Ant a = ((ClearCell)cell).getAnt();
 						if(a.getColor()== Config.RED_ANT){
-						buff.append("red ant of id "+ antID++ + ", dir "+ a.getDirection()+ ", food "+ a.getFood() + ", state "+ a.getState() + ", resting " + a.getResting());
+						buffer.append("red ant of id "+ antID++ + ", dir "+ a.getDirection()+ ", food "+ ((a.hasFood())? 1 : 0) + ", state "+ a.getState() + ", resting " + a.getResting());
 						}
 						else{
-							buff.append("black ant of id "+antID++ + ", dir "+ a.getDirection()+ ", food "+ a.getFood() + ", state "+ a.getState() + ", resting " + a.getResting());
+							buffer.append("black ant of id "+antID++ + ", dir "+ a.getDirection()+ ", food "+ ((a.hasFood())? 1 : 0) + ", state "+ a.getState() + ", resting " + a.getResting());
 						}
 					}
 				}
-				buff.append("\r\n");
+				buffer.append("\r\n");
 			}
 		}
-		return buff.toString();
+		return buffer.toString();
 	}
 }
