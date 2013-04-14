@@ -82,7 +82,7 @@ public class BrainCommandTests {
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getPosition().getX() == 5);
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getPosition().getY() == 4);
 		world.update();
-		//System.out.println(world.printWorld());
+		//System.out.println(world);
 		assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().getPosition().getX() == 6);
 		assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().getPosition().getY() == 4);
 	}
@@ -129,8 +129,8 @@ public class BrainCommandTests {
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();				//move failed because rock in the way
-		//System.out.println(world.printWorld());
-		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 3);
+		//System.out.println(world);
+		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 6);
 	}
 	
 	@Test
@@ -144,8 +144,8 @@ public class BrainCommandTests {
 		world.update();	//turn Left
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 5);
 		world.update();	//move
-		assertTrue(world.getWorld()[4][3].isOccupied());	//successfully moved
-		assertTrue(((ClearCell)world.getWorld()[4][3]).getAnt().getDirection() == 5);	//direction has not changed
+		assertTrue(world.getWorld()[5][3].isOccupied());	//successfully moved
+		assertTrue(((ClearCell)world.getWorld()[5][3]).getAnt().getDirection() == 5);	//direction has not changed
 	}
 	
 	@Test
@@ -159,8 +159,8 @@ public class BrainCommandTests {
 		world.update();	//turn Left
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 3);
 		world.update();	//move
-		assertTrue(world.getWorld()[4][4].isOccupied());	//successfully moved
-		assertTrue(((ClearCell)world.getWorld()[4][4]).getAnt().getDirection() == 3);	//direction has not changed
+		assertTrue(world.getWorld()[4][3].isOccupied());	//successfully moved
+		assertTrue(((ClearCell)world.getWorld()[4][3]).getAnt().getDirection() == 3);	//direction has not changed
 	}
 	
 	@Test
@@ -174,8 +174,8 @@ public class BrainCommandTests {
 		world.update();	//turn Left
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 2);
 		world.update();	//move
-		assertTrue(world.getWorld()[4][5].isOccupied());	//successfully moved
-		assertTrue(((ClearCell)world.getWorld()[4][5]).getAnt().getDirection() == 2);	//direction has not changed
+		assertTrue(world.getWorld()[4][4].isOccupied());	//successfully moved
+		assertTrue(((ClearCell)world.getWorld()[4][4]).getAnt().getDirection() == 2);	//direction has not changed
 	}
 	
 	@Test
@@ -189,8 +189,8 @@ public class BrainCommandTests {
 		world.update();	//turn Left
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 1);
 		world.update();	//move
-		assertTrue(world.getWorld()[5][5].isOccupied());	//successfully moved
-		assertTrue(((ClearCell)world.getWorld()[5][5]).getAnt().getDirection() == 1);	//direction has not changed
+		assertTrue(world.getWorld()[4][5].isOccupied());	//successfully moved
+		assertTrue(((ClearCell)world.getWorld()[4][5]).getAnt().getDirection() == 1);	//direction has not changed
 	}
 	
 	@Test
@@ -204,8 +204,8 @@ public class BrainCommandTests {
 		world.update();	//turn Left
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);	//full 360
 		world.update();	//move
-		assertTrue(world.getWorld()[6][4].isOccupied());	//successfully moved
-		assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().getDirection() == 0);	//direction has not changed
+		assertTrue(world.getWorld()[5][5].isOccupied());	//successfully moved
+		assertTrue(((ClearCell)world.getWorld()[5][5]).getAnt().getDirection() == 0);	//direction has not changed
 	}
 	
 	@Test

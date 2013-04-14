@@ -48,6 +48,7 @@ public class ClearCell implements Cell {
 	public void arrive(Ant a) throws CellOccupiedException {
 		if(this.ant == null) {
 			this.ant = a;
+			this.ant.setPosition(this.position);
 		}
 		else {
 			throw new CellOccupiedException("The cell is already occupied.");

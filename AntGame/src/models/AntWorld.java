@@ -138,7 +138,7 @@ public class AntWorld implements Model {
 				return false;
 			}
 			if (!from.isOccupied()) {
-				return false;				
+				return false;
 			}
 			
 			try {
