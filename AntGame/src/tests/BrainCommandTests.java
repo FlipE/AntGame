@@ -8,6 +8,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import util.Position;
+import util.RandomGen;
 
 import ai.AntBrain;
 import cells.Cell;
@@ -117,7 +118,7 @@ public class BrainCommandTests {
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
-		assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().getState() == 0);
+		assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().getState() == 3);
 	}
 	
 	@Test		//bug found does not switch to failed state !
@@ -260,7 +261,7 @@ public class BrainCommandTests {
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 1);	//brain goes to state 1 if fail
 	}
 	
-	@Test	//sense food command fails !
+	@Test
 	public void senseFoodAhead() throws Exception {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/senseFoodAhead.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
@@ -269,11 +270,10 @@ public class BrainCommandTests {
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
-		System.out.println(world);
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 1);
 	}
 	
-	@Test	//sense food command fails !
+	@Test
 	public void senseFoodRightAhead() throws Exception {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/senseFoodRightAhead.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
@@ -282,11 +282,10 @@ public class BrainCommandTests {
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
-		//System.out.println(world.printWorld());
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 1);
 	}
 	
-	@Test	//sense food command fails !
+	@Test
 	public void senseFoodLeftAhead() throws Exception {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/senseFoodLeftAhead.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
@@ -295,7 +294,6 @@ public class BrainCommandTests {
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
-		//System.out.println(world.printWorld());
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 1);
 	}
 	
@@ -308,7 +306,6 @@ public class BrainCommandTests {
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
-		//System.out.println(world.printWorld());
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 1);
 	}
 	
@@ -321,7 +318,6 @@ public class BrainCommandTests {
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
-		//System.out.println(world.printWorld());
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 1);
 	}
 	
@@ -362,5 +358,44 @@ public class BrainCommandTests {
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 1);
 	}
 	
+	@Test
+	public void movePickupRestMoveDrop() throws Exception {
+		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/movePickupMoveDrop.brain");
+		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
+		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and food.world");
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		
+		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);
+		world.update();	//move
+		assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().getDirection() == 0);
+		world.update();	//pickup
+		//System.out.println(world);
+		assertTrue(((ClearCell)world.getWorld()[6][4]).numFood() == 0);	//no food on the cell
+		assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().hasFood());	//ant has food
+		for (int i = 13; i > 0; i--){
+			assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().getResting() == i);
+			world.update();	//rest
+		}
+		world.update();	//move
+		//System.out.println(world);
+		assertTrue(((ClearCell)world.getWorld()[7][4]).getAnt().getDirection() == 0);
+		world.update();	//drop
+		//System.out.println(world);
+		assertTrue(((ClearCell)world.getWorld()[7][4]).numFood() == 1);		//no food on the cell
+		assertFalse(((ClearCell)world.getWorld()[7][4]).getAnt().hasFood());	//ant has food
+	}
+	
+	@Test
+	public void Flip() throws Exception {
+		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/movePickupMoveDrop.brain");
+		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
+		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and food.world");
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		//random sequence 0,0,1,0
+		
+		
+		
+
+	}
 	
 }
