@@ -157,13 +157,19 @@ public class ClearCell implements Cell {
 		}
 		return false;
 	}
+
 	@Override
-	public String toString() {
-		if (food == 0){
-		return "";
+	public void killOccupyingAnt() throws AntNotFoundException {
+		if(this.ant != null) {
+			this.ant.kill();
+			int color = this.ant.getColor();
+			this.ant = null;
+			this.food += Config.DEAD_ANT_FOOD_VALUE;
+			
+			System.out.println(((color == Config.BLACK_ANT) ? "black " : "red ") + "ant killed " + this.position);
 		}
-		else{
-			return food + " food;";
+		else {
+			throw new AntNotFoundException("There is no ant on this cell.");
 		}
 	}
 }

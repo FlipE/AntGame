@@ -3,6 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import util.Position;
 import util.RandomGen;
 import ai.AntBrain;
 import antgame.Config;
@@ -133,13 +134,7 @@ public class AntWorld implements Model {
 			// return failure if destination is occupied or source is not.
 			// failing here stops a bug where an ant is removed from a cell and can't
 			// be placed in an occupied cell.
-			if(to instanceof RockyCell) {
-				return false;
-			}
-			if (to.isOccupied()) {
-				return false;
-			}
-			if (!from.isOccupied()) {
+			if(to instanceof RockyCell || to.isOccupied() || !from.isOccupied()) {
 				return false;
 			}
 			
@@ -153,7 +148,9 @@ public class AntWorld implements Model {
 				// postcondition destination must be populated
 				assert (to.isOccupied());
 
-				// TODO check for surrounded ants				
+				// TODO check for surrounded ants
+				this.findAdjacentEnemy(toX, toY);
+				
 				return true;
 			}
 			catch (AntNotFoundException e) {				
@@ -169,6 +166,129 @@ public class AntWorld implements Model {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	/**
+	 * Given x and y coordinates of a cell, checks to see if that ant is now surrounding
+	 * an ant of the opposing team. If a surrounded ant is found it is killed. Killed
+	 * ants are removed from their cell and replaced by 3 food.
+	 * 
+	 * @param x
+	 * @param y
+	 */
+	private void findAdjacentEnemy(int x, int y) {
+		try {
+			Cell c = this.world[x][y];
+			if(c.isOccupied()) {
+				if(c instanceof ClearCell) {
+					ClearCell clearCell = (ClearCell) c;
+					
+					// get the ant which is now hoping to be surrounding an enemy
+					Ant a = clearCell.getAnt();
+					
+					// kill it if it is now surrounded by enemies
+					this.killAntIfSurrounded(x, y);
+					
+					// set the friendly color
+					int friendlyColor = a.getColor();
+					
+					// search each cell surrounding the ant for an ant of the enemy color
+					Position p = a.getPosition();
+					
+					for(int direction = 0; direction < 6; direction += 1) {
+						// get the adjacent position
+						Position adjacent = p.getPositionInDirection(direction);
+						
+						// get the adjacent cell
+						Cell adjacentCell = this.world[adjacent.getX()][adjacent.getY()];
+						
+						// see if there is an ant, if so check it's color
+						if(adjacentCell.isOccupied()) {
+							if(adjacentCell instanceof ClearCell) {
+								ClearCell clearAdjacentCell = (ClearCell) adjacentCell;
+								Ant adjacentAnt = clearAdjacentCell.getAnt();
+								
+								// if an enemy ant is found then each cell around it should be checked
+								// for ants of the friendly color.
+								if(adjacentAnt.getColor() != friendlyColor) {
+									this.killAntIfSurrounded(adjacent.getX(), adjacent.getY());
+								}
+							}
+						}						
+					}					
+				}
+			}
+		}
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	/**
+	 * Check if an ant is surreounded by enemies. If so it is killed and replaced
+	 * by 3 food.
+	 * 
+	 * @param x
+	 * @param y
+	 */
+	private void killAntIfSurrounded(int x, int y) {
+		try {
+			Cell c = this.world[x][y];
+			if(c.isOccupied()) {
+				if(c instanceof ClearCell) {
+					ClearCell clearCell = (ClearCell) c;
+					
+					// get the ant which might be killed if surrounded
+					Ant a = clearCell.getAnt();
+					
+					// set the friendly color
+					int friendlyColor = a.getColor();
+					
+					// search each cell surrounding the ant for an ant of the enemy color
+					Position p = a.getPosition();
+					
+					
+					int adjacentCount = 0;
+					
+					for(int direction = 0; direction < 6; direction += 1) {
+					
+						// get the adjacent position
+						Position adjacent = p.getPositionInDirection(direction);
+						
+						// get the adjacent cell
+						Cell adjacentCell = this.world[adjacent.getX()][adjacent.getY()];
+						
+						// see if there is an ant, if so check it's color
+						if(adjacentCell.isOccupied()) {
+							if(adjacentCell instanceof ClearCell) {
+								ClearCell clearAdjacentCell = (ClearCell) adjacentCell;
+								Ant adjacentAnt = clearAdjacentCell.getAnt();
+								
+								// if the ants color is the enemy then the ant could still be surrounded
+								if(adjacentAnt.getColor() != friendlyColor) {
+									adjacentCount += 1;
+								}								
+							}
+						}
+					}
+					
+					// kill the ant if it is surrounded by 5 or more ants
+					if(adjacentCount >= 5) {
+						try {
+							clearCell.killOccupyingAnt();
+						}
+						catch(AntNotFoundException e) {
+							e.printStackTrace();
+							//TODO log this instead
+						}
+					}
+				}
+			}
+		}
+		catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**

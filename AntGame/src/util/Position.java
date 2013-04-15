@@ -139,4 +139,14 @@ public class Position {
 		
 		return p;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuffer s = new StringBuffer();
+		s.append(this.x);
+		s.append(", ");
+		s.append(this.y);
+		return s.toString();
+	}
+	
 }

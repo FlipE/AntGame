@@ -60,4 +60,7 @@ public class Config {
 	// the value which represents a match in which both teams score the same
 	public static final int DRAW = -1;
 	
+	// the number of food an ant becomes when it is killed
+	public static final int DEAD_ANT_FOOD_VALUE = 3;
+	
 }

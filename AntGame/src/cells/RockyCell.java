@@ -41,10 +41,9 @@ public class RockyCell implements Cell {
 	public void arrive(Ant a) throws CellOccupiedException {
 		throw new CellOccupiedException("Ants cannot occupy rocky cells.");
 	}
-	
-	@Override
-	public String toString() {
-		return "rock";
-	}
 
+	@Override
+	public void killOccupyingAnt() throws AntNotFoundException {
+		throw new AntNotFoundException("Ants cannot occupy rocky cells.");
+	}
 }

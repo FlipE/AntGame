@@ -31,6 +31,7 @@ public class Ant implements Model {
 	private Position position;
 	private AntBrain brain;
 	private int lastUpdated;
+	private boolean isDead;
 	
 	/**
 	 * 
@@ -47,6 +48,7 @@ public class Ant implements Model {
 		}
 		this.state = 0;
 		this.lastUpdated = -1;
+		this.isDead = false;
 	}
 	
 	/* (non-Javadoc)
@@ -395,6 +397,10 @@ public class Ant implements Model {
 	 */
 	public int getLastupdated() {
 		return this.lastUpdated;
+	}
+
+	public void kill() {
+		this.isDead = true;
 	}
 	
 }

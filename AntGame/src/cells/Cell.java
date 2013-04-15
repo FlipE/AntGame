@@ -19,5 +19,6 @@ public interface Cell {
 	public boolean isOccupied();
 	public Ant leave() throws AntNotFoundException;
 	public void arrive(Ant a) throws CellOccupiedException;
+	public void killOccupyingAnt() throws AntNotFoundException;
 	
 }
