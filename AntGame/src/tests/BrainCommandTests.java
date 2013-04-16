@@ -359,6 +359,48 @@ public class BrainCommandTests {
 	}
 	
 	@Test
+	public void MoveSenseFoeMarkerAhead() throws Exception {
+		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/moveSenseFoeMarkerAhead.brain");
+		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/moveMark.brain");
+		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and foe.world");
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		
+		world.update();
+		world.update();
+		world.update();
+		//System.out.println(world);
+		assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().getState() == 9);	
+	}
+	
+	@Test
+	public void MoveSenseFoeWithFoodAhead() throws Exception {
+		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/moveSenseFoeWithFoodAhead.brain");
+		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/movePickUp.brain");
+		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and foe and food.world");
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		world.update();
+		world.update();
+		world.update();
+		//System.out.println(world);
+		assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().getState() == 9);
+	}
+	
+	@Test
+	public void MoveSenseFriendWithFoodAhead() throws Exception {
+		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/moveSenseFriendWithFoodAhead.brain");
+		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
+		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and friend and food.world");
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		world.update();	//1st ant moves 2nd blocked
+		world.update(); //2nd ant moves 1st
+		world.update();
+		world.update();
+		//System.out.println(world);
+		assertTrue(((ClearCell)world.getWorld()[6][4]).getAnt().getState() == 9);
+	}
+	
+	
+	@Test
 	public void movePickupRestMoveDrop() throws Exception {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/movePickupMoveDrop.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
@@ -386,20 +428,13 @@ public class BrainCommandTests {
 		assertFalse(((ClearCell)world.getWorld()[7][4]).getAnt().hasFood());	//ant has food
 	}
 	
-	@Test		//wrong !
+	@Test
 	public void Flip() throws Exception {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/flip.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
 		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
 		//random sequence 0,0,1,0,0,1
-//		RandomGen r = new RandomGen(1234);
-//		System.out.println(r.randomint(2));
-//		System.out.println(r.randomint(2));
-//		System.out.println(r.randomint(2));
-//		System.out.println(r.randomint(2));
-//		System.out.println(r.randomint(2));
-//		System.out.println(r.randomint(2));
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
@@ -456,5 +491,29 @@ public class BrainCommandTests {
 		assertTrue(((ClearCell)world.getCells()[6][4]).senseRedTrail(1));
 		world.update();
 		assertTrue(((ClearCell)world.getCells()[6][4]).getAnt().getState() == 9);
+	}
+	
+	@Test
+	public void AttemptMoveontoFoeAnt() throws Exception {
+		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/move.brain");
+		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/TurnRight.brain");
+		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and foe.world");
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		world.update();
+		//System.out.println(world);
+		assertTrue(((ClearCell)world.getCells()[5][4]).getAnt().getState() == 0);
+		
+	}
+	
+	@Test
+	public void AttemptMoveontoFriendAnt() throws Exception {
+		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/move.brain");
+		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
+		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and friend.world");
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		world.update();
+		//System.out.println(world);
+		assertTrue(((ClearCell)world.getCells()[5][4]).getAnt().getState() == 0);
+		
 	}
 }

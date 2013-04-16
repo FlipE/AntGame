@@ -1,0 +1,4 @@
+Move 1 0
+Sense Here 3 2 Food
+Sense Ahead 9 2 FriendWithFood
+PickUp 3 6

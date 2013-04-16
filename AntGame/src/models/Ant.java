@@ -32,6 +32,7 @@ public class Ant implements Model {
 	private AntBrain brain;
 	private int lastUpdated;
 	private boolean isDead;
+	public Ant old;
 	
 	/**
 	 * 
@@ -49,6 +50,16 @@ public class Ant implements Model {
 		this.state = 0;
 		this.lastUpdated = -1;
 		this.isDead = false;
+		this.old = null;
+	}
+	public Object clone(){
+		Ant a = new Ant(world, position, color);
+		a.state = this.state;
+		a.resting = this.resting;
+		a.hasFood = this.hasFood;
+		a.brain = this.brain;
+		a.isDead = this.isDead;
+		return a;
 	}
 	
 	/* (non-Javadoc)
@@ -56,6 +67,10 @@ public class Ant implements Model {
 	 */
 	@Override
 	public void update() {
+		
+		if (lastUpdated > -1){		//from the second round and after, store the previous state for debugging
+			old = (Ant) this.clone();
+		}
 		
 		// reduce the resting time
 		if(this.resting > 0) {

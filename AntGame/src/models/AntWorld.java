@@ -664,13 +664,20 @@ public class AntWorld implements Model {
 						}
 						buffer.append("; ");
 					}
-					if (cell.isOccupied()&&type!="cells.RockyCell"){
+					if (cell.isOccupied()&&type!="cells.RockyCell"){		//second line added to debug log
 						Ant a = ((ClearCell)cell).getAnt();
+						
 						if(a.getColor()== Config.RED_ANT){
-						buffer.append("red ant of id "+ antID++ + ", dir "+ a.getDirection()+ ", food "+ ((a.hasFood())? 1 : 0) + ", state "+ a.getState() + ", resting " + a.getResting());
+							buffer.append("red ant of id "+ antID++ + ", dir "+ a.getDirection()+ ", food "+ ((a.hasFood())? 1 : 0) + ", state "+ a.getState() + ", resting " + a.getResting());
+//							if(a.old != null){
+//								buffer.append("\nLast seen, dir "+ a.old.getDirection()+ ", food "+ ((a.old.hasFood())? 1 : 0) + ", state "+ a.old.getState() + ", resting " + a.old.getResting());
+//							}
 						}
 						else{
 							buffer.append("black ant of id "+antID++ + ", dir "+ a.getDirection()+ ", food "+ ((a.hasFood())? 1 : 0) + ", state "+ a.getState() + ", resting " + a.getResting());
+//							if(a.old != null){
+//								buffer.append("\nLast seen, dir "+ a.old.getDirection()+ ", food "+ ((a.old.hasFood())? 1 : 0) + ", state "+ a.old.getState() + ", resting " + a.old.getResting());
+//							}
 						}
 					}
 				}
