@@ -1,0 +1,15 @@
+GAME DESCRIPTION
+This is a competitive two-player strategy game. Both players design an ant-brain. To run the game, the brains are uploaded into an ant world with two ant colonies, one for each player. The ant world will then simulate the behaviour of both kinds of ants, using the ant-brains supplied by the players. More precisely, in a match, the two species of ants are placed in a random world containing two anthills, some food sources, and several obstacles. They must explore the world, find food and bring it back to their anthill. 
+
+There is also the option to play in tournament mode where an arbitrary number of players can upload ant-brains, who are all paired up to play against each other. The overall tournament winner is the ant brain that wins the most individual games.
+
+GAME RULES
+Ants can communicate or leave trails by means of chemical markers. Each species of ants can sense (with limited capabilities), but not modify, the markers of the other species. Ants can also attack the ants of the other species by surrounding them. Ants that die as a result of an attack become food. The match is won by the species with the most food in its anthill at the end of 300000 rounds.
+
+During the tournament, each pair of submissions is pitted against each other twice on each of the contest worlds---once with the first submission playing red and the second black, and once with the first playing black and the second red. A submission gains 2 points for each game it wins, and 1 point for each draw. The submission with the most points wins the tournament. The number of the worlds used during the tournament is unspecified, but will be large enough for determining a clear winner. If there is nevertheless no clear winner, the tournament is repeated with a certain number of finalist submissions.
+
+MENU HELP
+To start the ant simulation the players need to upload an ant world and also two ant brains (or more, depending on how many players participate - in a tournament there is an unlimited number of players thus unlimited number of ant brains). When these files are uploaded you will have to wait until the program checks if the provided files are lexically and syntactically valid. If they are valid a green tick appears next to them and the players can proceed with playing the game by pressing the start button. Otherwise, a red cross is displayed next to the incorrect files that were uploaded and the players need to pick another file which has to be correct in order to start the game.
+
+WHAT MAKES A VALID WORLD/ANT BRAIN
+You’ve uploaded your file (world or ant brain) but the program says it is not lexically/syntactically valid. So you’re unsure why is that? See some examples of well-constructed worlds and ant brains here: http://www.sussex.ac.uk/Users/amf28/antGame/index.html

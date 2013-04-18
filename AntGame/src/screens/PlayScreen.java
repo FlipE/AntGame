@@ -70,8 +70,15 @@ public class PlayScreen extends AbstractScreen implements MatchListener {
 	@Override
 	public void show() {
 		try {
-
-			this.reset();
+			
+			// continue button
+			Drawable backUp = new TextureRegionDrawable(Assets.textures.findRegion("continue-up"));
+			Drawable backDown = new TextureRegionDrawable(Assets.textures.findRegion("continue-down"));
+			continueBtn = new Button(backUp, backDown, backDown);
+			continueBtn.setName("continue");
+			continueBtn.addListener(controller);
+			
+			this.matchResults = new Table();
 			
 			// this call make the match manager pair up all teams to play on each world
 			this.matchManager.match();
@@ -82,11 +89,8 @@ public class PlayScreen extends AbstractScreen implements MatchListener {
 			// register this screen as an observer of the match
 			match.addListener(this);
 
-			// create the new view giving it the world
-			worldView = new AntWorldView(match.getCells(), stage);
-
 			// setup the ui
-
+			
 			// create a table layout to add ui items to the stage
 			Skin skin = Assets.skin;
 			root = new Table(skin);
@@ -97,8 +101,7 @@ public class PlayScreen extends AbstractScreen implements MatchListener {
 			// set the screen state to get ready so that game doesn;t start immediately
 			this.getReady();
 			
-			// set the stage as the input processor
-			Gdx.input.setInputProcessor(stage);
+			
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -175,6 +178,7 @@ public class PlayScreen extends AbstractScreen implements MatchListener {
 	 */
 	@Override
 	public void isFinished() {
+		System.out.println("finished");
 		this.matchResultState();
 	}
 
@@ -184,7 +188,13 @@ public class PlayScreen extends AbstractScreen implements MatchListener {
 	public void getReady() {
 
 		// add the hud at the top of the table
+		this.reset();
+		root.setFillParent(true);
+		
+		// new hud and renderer for this match
 		this.hud = new HeadsUpDisplay(match);
+		this.worldView = new AntWorldView(match.getCells(), stage);
+		
 		this.root.add(this.hud).top().padTop(10);
 		this.root.row();
 		
@@ -197,6 +207,11 @@ public class PlayScreen extends AbstractScreen implements MatchListener {
 		playBtn.addListener(controller);
 		root.add(playBtn).expand();
 		
+		this.stage.addActor(root);
+		
+		// set the stage as the input processor
+		Gdx.input.setInputProcessor(stage);
+		
 		// set the state
 		this.screenState = ScreenState.GET_READY;
 	}
@@ -207,9 +222,10 @@ public class PlayScreen extends AbstractScreen implements MatchListener {
 	public void playState() {
 		
 		// remove the play button from root by clearing it and re-adding the hud
-		this.root.clear();
-		this.root.add(this.hud).top().expand().padTop(10);
-		this.root.row();
+		//this.root.add(this.hud).top().expand().padTop(10);
+		//this.root.row();
+		
+		this.root.removeActor(this.playBtn);
 		
 		// set the state
 		this.screenState = ScreenState.PLAYING;
@@ -224,22 +240,21 @@ public class PlayScreen extends AbstractScreen implements MatchListener {
 
 	public void matchResultState() {
 		
+		// set the state
+		this.screenState = ScreenState.MATCH_RESULT;
+		System.out.println("results");
+		
 		// clear the table and re-add the hud
-		this.root.clear();
+		this.root.reset();
+		this.root.layout();
+		root.setFillParent(true);
 		this.root.add(this.hud).top().padTop(10);;
 		this.root.row();
+		this.root.removeActor(this.matchResults);
 		
 		// show the match result table
 		Skin skin = Assets.skin;
-		this.matchResults = new Table();
-		
-		
-		// continue button
-		Drawable backUp = new TextureRegionDrawable(Assets.textures.findRegion("continue-up"));
-		Drawable backDown = new TextureRegionDrawable(Assets.textures.findRegion("continue-down"));
-		continueBtn = new Button(backUp, backDown, backDown);
-		continueBtn.setName("continue");
-		continueBtn.addListener(controller);
+		this.matchResults.clear();
 		
 		// player name and score labels
 		Label redName = new Label(this.match.getRedPlayerName(), skin);
@@ -257,8 +272,6 @@ public class PlayScreen extends AbstractScreen implements MatchListener {
 		
 		this.root.add(this.matchResults).expand();
 		
-		// set the state
-		this.screenState = ScreenState.MATCH_RESULT;				
 	}
 	
 	/**
@@ -266,8 +279,11 @@ public class PlayScreen extends AbstractScreen implements MatchListener {
 	 * go to the score screen
 	 */
 	public void nextMatch() {
+		System.out.println(this.matchManager.hasNext());
 		if (this.matchManager.hasNext()) {
 			this.match = this.matchManager.next();
+			// register this screen as an observer of the match
+			this.match.addListener(this);
 			this.getReady();
 		}
 		else {

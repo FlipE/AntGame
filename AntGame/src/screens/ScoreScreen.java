@@ -4,9 +4,11 @@
 package screens;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeIn;
+import models.PlayerInfo;
 import antgame.AntGame;
 import antgame.Assets;
 import antgame.Config;
+import antgame.MatchManager;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
@@ -24,18 +26,19 @@ import com.badlogic.gdx.utils.Scaling;
 import controllers.HelpScreenController;
 
 /**
- * PlayScreen.java
+ * ScoreScreen.java
  * 
- * @author Chris B
  * @date 25 Mar 2013
  * @version 1.0
  */
 public class ScoreScreen extends AbstractScreen {
 
+	Table centre;
 	private Image backgroundImage;
 	private Image logoImage;
 	private Table root;
 	private Button continueButton;
+	private MatchManager matchManager;
 	
 	/**
 	 * @param game
@@ -85,16 +88,14 @@ public class ScoreScreen extends AbstractScreen {
 		// load the menu items. the item names allow the controller distinguish between them to 
 		// perform different tasks
 		// create a center section for the content
-		Table centre = new Table(skin);
+		centre = new Table(skin);
 		final ScrollPane scroll = new ScrollPane(centre);
 		scroll.setSmoothScrolling(true);
 		scroll.setFadeScrollBars(false);
 		scroll.setScrollingDisabled(true, false);
 		root.add(scroll).expand().fill().pad(75).padBottom(10);
 		root.row();
-		
-		// centre.add the score table
-		
+				
 		// continue button
 		Drawable backUp = new TextureRegionDrawable(Assets.textures.findRegion("continue-up"));
 		Drawable backDown = new TextureRegionDrawable(Assets.textures.findRegion("continue-down"));
@@ -111,8 +112,66 @@ public class ScoreScreen extends AbstractScreen {
 		centre.debug();
 	}
 
+	/**
+	 * @param p
+	 * @return
+	 */
+	private Table headings() {
+		Skin skin = Assets.skin;
+		Table scoreTbl = new Table();
+		
+		Label name = new Label("Player Name", skin);
+		Label wins = new Label("Wins", skin);
+		Label draws = new Label("Draw", skin);
+		Label losses = new Label("Lose", skin);
+		
+		scoreTbl.add(name).prefWidth(300);
+		scoreTbl.add(wins).prefWidth(40);
+		scoreTbl.add(draws).prefWidth(40);
+		scoreTbl.add(losses).prefWidth(40);
+		
+		return scoreTbl;
+	}
+	
+	/**
+	 * @param p
+	 * @return
+	 */
+	private Table playerScore(PlayerInfo p) {
+		Skin skin = Assets.skin;
+		Table scoreTbl = new Table();
+		
+		Label name = new Label(p.getName(), skin);
+		Label wins = new Label(p.getWins() + "", skin);
+		Label draws = new Label(p.getDraws() + "", skin);
+		Label losses = new Label(p.getLosses() + "", skin);
+		
+		scoreTbl.add(name).prefWidth(300);
+		scoreTbl.add(wins).prefWidth(40);
+		scoreTbl.add(draws).prefWidth(40);
+		scoreTbl.add(losses).prefWidth(40);
+		
+		return scoreTbl;
+	}
+
 	@Override
 	public void show() {
+		
+		// clear the old content
+		this.centre.clear();
+		this.centre.top();
+		// first sort the players
+		this.matchManager = MatchManager.getInstance();
+		this.matchManager.sortPlayers();
+		
+		centre.add(this.headings());
+		centre.row();
+		
+		// then add all players
+		for(PlayerInfo p : this.matchManager.getPlayers()) {
+			centre.add(this.playerScore(p));
+			centre.row();
+		}
 		
 		// set the stage as the input processor
 		Gdx.input.setInputProcessor(stage);
@@ -121,9 +180,6 @@ public class ScoreScreen extends AbstractScreen {
 		//backgroundImage.getColor().a = 0f;
 		root.getColor().a = 0f;
 		
-		// fade in the background
-		//backgroundImage.addAction(fadeIn(0.75f));
-				
 		// fade in the menu items
 		root.addAction(fadeIn(0.75f));
 	}

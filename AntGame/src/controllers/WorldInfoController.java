@@ -11,6 +11,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import models.WorldInfo;
 import antgame.Config;
 
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 
@@ -23,6 +24,8 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
  */
 public class WorldInfoController extends InputListener {
 
+	private Actor actor;
+	private String actorName;
 	private WorldInfo worldInfo;
 	
 	/**
@@ -39,10 +42,19 @@ public class WorldInfoController extends InputListener {
 
 	public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
 		
-		File file = openWorldDialogue();
-		if(file != null) {
-			worldInfo.loadWorld(file.getPath());
+		actor = event.getTarget();
+		actorName = actor.getName();
+		
+		if(actorName.equals("random")) {
+			worldInfo.generateWorld();
 		}
+		else {
+			File file = openWorldDialogue();
+			if(file != null) {
+				worldInfo.loadWorld(file.getPath());
+			}
+		}
+		
 	}
 	
 	private File openWorldDialogue() {

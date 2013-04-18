@@ -32,7 +32,9 @@ public class WorldInfoView extends Table implements WorldInfoListener {
 	private Label worldLbl;
 	private TextField worldTxt;
 	private Button browseBtn;
-	private FormValidationFeedback worldFeedback; 
+	private Button randomBtn;
+	private FormValidationFeedback worldFeedback;
+	
 	
 	public WorldInfoView(WorldInfo worldInfo) {
 		super();
@@ -53,12 +55,22 @@ public class WorldInfoView extends Table implements WorldInfoListener {
 		// Title
 		title = new Label("World", skin);
 
+		// generate a random world
+		Drawable randomUp = new TextureRegionDrawable(Assets.textures.findRegion("random-up"));
+		Drawable randomDown = new TextureRegionDrawable(Assets.textures.findRegion("random-down"));
+		worldLbl = new Label("World:", skin);
+		worldTxt = new TextField("Not Set", skin);
+		randomBtn = new Button(randomUp, randomDown);
+		randomBtn.setName("random");
+		randomBtn.addListener(controller);
+		
 		// choose brain
 		Drawable browseUp = new TextureRegionDrawable(Assets.textures.findRegion("browse-up"));
 		Drawable browseDown = new TextureRegionDrawable(Assets.textures.findRegion("browse-down"));
 		worldLbl = new Label("World:", skin);
 		worldTxt = new TextField("Not Set", skin);
 		browseBtn = new Button(browseUp, browseDown);
+		browseBtn.setName("browse");
 		browseBtn.addListener(controller);
 		
 		// loader feedback display
@@ -77,8 +89,9 @@ public class WorldInfoView extends Table implements WorldInfoListener {
 		
 		// add world
 		this.add(worldLbl).right().padLeft(55);
-		this.add(worldTxt).left().expandX().prefWidth(300).padRight(5);
+		this.add(worldTxt).left().expandX().prefWidth(225).padRight(5);
 		this.add(browseBtn);
+		this.add(randomBtn);
 		this.add(worldFeedback).padRight(34);
 		this.row();
 	}

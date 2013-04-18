@@ -61,17 +61,34 @@ public class Match {
 		this.matchSpeed = 100;
 	}
 
+	/**
+	 * Update the world if there are still rounds in thr match.
+	 * Otherwise determine the winner
+	 */
 	public void update() {
 		if(world.getRoundNum() < Config.NUM_ROUNDS_PER_MATCH) {
 			for(int i = 0 ; i < this.matchSpeed; i += 1) {
 				world.update();
 			}
 		}
-		else {
+		else if(!this.isFinished) {
 			this.winner = this.getWinner(world.getRedScore(), world.getBlackScore());
+			if(this.winner == Config.RED_ANT) {
+				this.redPlayer.incrementWins();
+				this.blackPlayer.incrementLosses();
+			}
+			else if(this.winner == Config.BLACK_ANT) {
+				this.redPlayer.incrementLosses();
+				this.blackPlayer.incrementWins();
+			}
+			else {
+				this.redPlayer.incrementdraws();
+				this.blackPlayer.incrementdraws();
+			}
+			
 			this.isFinished = true;
 			this.notifyMatchFinished();
-		}		
+		}
 	}
 	
 	private void notifyMatchFinished() {
@@ -97,20 +114,20 @@ public class Match {
 	}
 	
 	/**
-	 * Returns the id of the player with the highest score or
+	 * Returns the color of the player with the highest score or
 	 * {@link antgame.Config.DRAW} if the game is a draw.
 	 * 
 	 * @param redScore
 	 * @param blackScore
-	 * @return the id of the player with the highest score or {@link antgame.Config.DRAW} if the game is a draw.
+	 * @return the color of the player with the highest score or {@link antgame.Config.DRAW} if the game is a draw.
 	 */
 	public int getWinner(int redScore, int blackScore) {
 		int winner = Config.DRAW;
 		if(blackScore > redScore) {
-			winner = blackPlayer.getId();
+			winner = Config.BLACK_ANT;
 		}
 		else if(blackScore < redScore) {
-			winner = redPlayer.getId();
+			winner = Config.RED_ANT;
 		}		
 		return winner;
 	}

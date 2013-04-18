@@ -40,7 +40,7 @@ public class AntWorld implements Model {
 	 * @param world
 	 */
 	public AntWorld(Cell[][] world, AntBrain redBrain, AntBrain blackBrain, int seed) {
-		this.world = world;
+		this.world = cloneCells(world);
 		this.redBrain = redBrain;
 		this.blackBrain = blackBrain;
 		this.ants = new ArrayList<Ant>();
@@ -52,7 +52,7 @@ public class AntWorld implements Model {
 		this.random = new RandomGen(seed);
 		this.initialise();
 	}
-
+	
 	/**
 	 * 
 	 */
@@ -717,5 +717,27 @@ public class AntWorld implements Model {
 			}
 		}
 		return buffer.toString();
+	}
+	
+	public Cell[][] cloneCells(Cell[][] oldCells){
+		Cell[][] cells = new Cell[oldCells.length][oldCells[0].length];
+		for (int i = 0; i < oldCells.length; i++) {
+			for (int j = 0; j < oldCells.length; j++) {
+
+				if (oldCells[i][j].getClass().equals(ClearCell.class)) {
+					cells[i][j] = new ClearCell(i, j, ((ClearCell)oldCells[i][j]).numFood());
+				}
+				else if (oldCells[i][j].getClass().equals(RockyCell.class)) {
+					cells[i][j] = new RockyCell(i, j);
+				}
+				else if (oldCells[i][j].getClass().equals(RedAntHill.class)) {
+					cells[i][j] = new RedAntHill(i, j, 0);
+				}
+				else if (oldCells[i][j].getClass().equals(BlackAntHill.class)) {
+					cells[i][j] = new BlackAntHill(i, j, 0);
+				}
+			}
+		}
+		return cells;
 	}
 }

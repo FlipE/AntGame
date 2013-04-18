@@ -32,13 +32,14 @@ public class WorldGenerator
 	{
 		numOfRocks = rocks;
 		numOfFoodBlobs = foodBlobs;
+		/**
 		generateWorld();
 		try {
 			worldFile = createWorldFile(getWorldData());
 		}
 		catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	public static void main(String[] args)
@@ -315,7 +316,7 @@ public class WorldGenerator
 	public File createWorldFile(String worldData) throws IOException
 	{
 		File f;
-		f = new File("AntWorld.world");
+		f = new File("AntWorld" + System.currentTimeMillis() + ".world");
 		if(!f.exists()){
 			f.createNewFile();
 		}

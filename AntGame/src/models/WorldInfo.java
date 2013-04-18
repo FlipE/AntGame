@@ -3,14 +3,17 @@
  */
 package models;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import listeners.WorldInfoListener;
 import listeners.WorldLoaderListener;
 import cells.Cell;
 import fileio.WorldLoader;
-
+import generator.world.WorldGenerator;
 /**
  * WorldInfo.java
  *
@@ -34,7 +37,10 @@ public class WorldInfo implements WorldLoaderListener {
 	public WorldInfo() {
 		super();
 		this.listeners = new ArrayList<WorldInfoListener>();
-		this.seed = 12345;
+		
+		// default if nothing else is set
+		Random r = new Random();
+		this.seed = r.nextInt(Integer.MAX_VALUE);
 	}
 	
 	/**
@@ -130,6 +136,21 @@ public class WorldInfo implements WorldLoaderListener {
 	private void notifyUpdateWorldPath(String message, boolean isValid) {
 		for(WorldInfoListener l : this.listeners) {
 			l.updateWorldPath(message, isValid);
+		}
+	}
+
+	/**
+	 * generate a new world file and parse it.
+	 */
+	public void generateWorld() {
+		WorldGenerator g = new WorldGenerator(14, 11);
+		g.generateWorld();
+		try {
+			File worldFile = g.createWorldFile(g.getWorldData());
+			this.loadWorld(worldFile.getPath());
+		}
+		catch (IOException e) {
+			this.notifyUpdateWorldPath(e.getMessage(), false);
 		}
 	}
 }

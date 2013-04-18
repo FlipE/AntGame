@@ -15,17 +15,21 @@ import fileio.AntBrainLoader;
 /**
  * PlayerInfo.java
  *
- * @author 	Chris B
  * @date	2 Apr 2013
  * @version	1.0
  */
-public class PlayerInfo implements AntBrainLoaderListener {
+public class PlayerInfo implements AntBrainLoaderListener, Comparable<PlayerInfo> {
 
 	private List<PlayerInfoListener> listeners;
 	private AntBrain brain;
 	private String brainPath;
 	private String name;
 	private int id;
+	
+	// keep track of how many times the player wins losses or draws a game
+	private int wins;
+	private int losses;
+	private int draws;
 	
 	/**
 	 * @param name
@@ -157,4 +161,54 @@ public class PlayerInfo implements AntBrainLoaderListener {
 			l.updateName(name, isValid);
 		}
 	}
+	
+	public void incrementWins() {
+		this.wins += 1;
+	}
+	
+	public void incrementLosses() {
+		this.losses += 1;
+	}
+	
+	public void incrementdraws() {
+		this.draws += 1;
+	}
+
+	/**
+	 * @return the wins
+	 */
+	public int getWins() {
+		return wins;
+	}
+
+	/**
+	 * @return the losses
+	 */
+	public int getLosses() {
+		return losses;
+	}
+
+	/**
+	 * @return the draws
+	 */
+	public int getDraws() {
+		return draws;
+	}
+
+	/**
+	 * compare the number of wins
+	 */
+	@Override
+	public int compareTo(PlayerInfo other) {
+		if(this.wins > other.wins) {
+			return 1;
+		}
+		else if(this.wins == other.wins) {
+			return 0;
+		}
+		else {
+			return -1;
+		}
+	}
+
 }
