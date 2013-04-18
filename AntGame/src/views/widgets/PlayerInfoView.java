@@ -7,7 +7,6 @@ import listeners.PlayerInfoListener;
 import models.PlayerInfo;
 import antgame.Assets;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -49,7 +48,7 @@ public class PlayerInfoView extends Table implements PlayerInfoListener {
 		this.playerInfo.addListener(this);
 		
 		// load the skin
-		Skin skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+		Skin skin = Assets.skin;
 		
 		// initialise the controller for the menu
 		PlayerInfoController controller = new PlayerInfoController(this.playerInfo);

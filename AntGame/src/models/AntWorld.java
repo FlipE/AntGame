@@ -19,7 +19,6 @@ import exceptions.CellOccupiedException;
 /**
  * World.java
  * 
- * @author Chris B
  * @date 17 Mar 2013
  * @version 1.0
  */
@@ -27,6 +26,8 @@ public class AntWorld implements Model {
 
 	private Cell[][] world;
 	private List<Ant> ants;
+	private List<BlackAntHill> blackAntHill;
+	private List<RedAntHill> redAntHill;
 	private int roundNum;
 	private int redScore;
 	private int blackScore;
@@ -38,16 +39,17 @@ public class AntWorld implements Model {
 	 * 
 	 * @param world
 	 */
-	public AntWorld(Cell[][] world, AntBrain redBrain, AntBrain blackBrain) {
+	public AntWorld(Cell[][] world, AntBrain redBrain, AntBrain blackBrain, int seed) {
 		this.world = world;
 		this.redBrain = redBrain;
 		this.blackBrain = blackBrain;
 		this.ants = new ArrayList<Ant>();
+		this.redAntHill = new ArrayList<RedAntHill>();
+		this.blackAntHill = new ArrayList<BlackAntHill>();
 		this.roundNum = 0;
 		this.redScore = 0;
 		this.blackScore = 0;
-		// TODO some way of making the seeds different for games but somehow saveable?
-		this.random = new RandomGen(12345);
+		this.random = new RandomGen(seed);
 		this.initialise();
 	}
 
@@ -69,6 +71,16 @@ public class AntWorld implements Model {
 					try {
 						Ant a = b.spawnAnt(this);
 						//this.ants.add(a);
+						
+						if(b instanceof RedAntHill) {
+							RedAntHill red = (RedAntHill) b;
+							this.redAntHill.add(red);
+						}
+						else if(b instanceof BlackAntHill) {
+							BlackAntHill black = (BlackAntHill) b;
+							this.blackAntHill.add(black);
+						}
+						
 					}
 					catch (CellOccupiedException e) {
 						// this shouldn't happen but if the ant hill 
@@ -300,6 +312,24 @@ public class AntWorld implements Model {
 	}
 
 	/**
+	 * Calculate the scores of each team. This is done by counting
+	 * the number of food each team has on its respective ant hill
+	 */
+	private void calculateScores() {
+		// calculate red score
+		this.redScore = 0;
+		for(RedAntHill r : this.redAntHill) {
+			this.redScore += r.numFood();
+		}
+		
+		// calculate black score
+		this.blackScore = 0;
+		for(BlackAntHill b : this.blackAntHill) {
+			this.blackScore += b.numFood();
+		}
+	}
+	
+	/**
 	 * @param position
 	 * @return
 	 */
@@ -308,9 +338,11 @@ public class AntWorld implements Model {
 			Cell cell = this.world[x][y];
 			if (cell instanceof ClearCell) {
 				ClearCell clearCell = (ClearCell) cell;
-				return clearCell.pickUpFood();
-				
-				// TODO keep track of score possible to pick up food from clear cell, home, foe home
+				boolean result =  clearCell.pickUpFood();
+				if(result) {
+					this.calculateScores();
+				}
+				return result;
 			}
 		}
 		catch (ArrayIndexOutOfBoundsException e) {
@@ -330,7 +362,7 @@ public class AntWorld implements Model {
 				ClearCell clearCell = (ClearCell) cell;
 				clearCell.dropFood();
 				
-				// TODO keep track of score possible to drop food on clear cell, home, foe home
+				this.calculateScores();
 			}
 		}
 		catch (ArrayIndexOutOfBoundsException e) {

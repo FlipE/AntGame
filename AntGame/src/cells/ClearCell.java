@@ -9,7 +9,6 @@ import exceptions.CellOccupiedException;
 /**
  * Cell.java
  *
- * @author 	Chris B
  * @date	17 Mar 2013
  * @version	1.0
  */
@@ -162,11 +161,11 @@ public class ClearCell implements Cell {
 	public void killOccupyingAnt() throws AntNotFoundException {
 		if(this.ant != null) {
 			this.ant.kill();
-			int color = this.ant.getColor();
+			//int color = this.ant.getColor();
 			this.ant = null;
 			this.food += Config.DEAD_ANT_FOOD_VALUE;
 			
-			System.out.println(((color == Config.BLACK_ANT) ? "black " : "red ") + "ant killed " + this.position);
+			//System.out.println(((color == Config.BLACK_ANT) ? "black " : "red ") + "ant killed " + this.position);
 		}
 		else {
 			throw new AntNotFoundException("There is no ant on this cell.");

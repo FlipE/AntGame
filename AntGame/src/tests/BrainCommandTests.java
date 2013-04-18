@@ -24,7 +24,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/turnRight.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);
 		world.update();
@@ -44,7 +44,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/turnLeft.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);
 		world.update();
@@ -64,7 +64,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/turnLeftRight.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);
 		world.update();	//turn Left
@@ -78,7 +78,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/move.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getPosition().getX() == 5);
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getPosition().getY() == 4);
@@ -93,7 +93,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/move.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getPosition().getX() == 5);
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getPosition().getY() == 4);
@@ -114,7 +114,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/moveStateSuccess.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
@@ -126,7 +126,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/moveStateFail.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and rock.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();				//move failed because rock in the way
@@ -139,7 +139,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/turnLeft1move.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);
 		world.update();	//turn Left
@@ -154,7 +154,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/turnLeft2move.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);
 		world.update();	//turn Left
@@ -170,7 +170,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/turnLeft3move.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);
 		world.update();	//turn Left
@@ -187,7 +187,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/turnLeft4move.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);
 		world.update();	//turn Left
@@ -207,7 +207,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/turnLeft5move.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);
 		world.update();	//turn Left
@@ -226,7 +226,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/movePickup.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and food.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);
 		world.update();	//move
@@ -242,7 +242,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/senseHomeHere.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
@@ -254,7 +254,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/senseFoodHere.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
@@ -266,7 +266,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/senseFoodAhead.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and food.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
@@ -278,7 +278,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/senseFoodRightAhead.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and food right ahead.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
@@ -290,7 +290,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/senseFoodLeftAhead.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and food left ahead.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
@@ -302,7 +302,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/senseRockAhead.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and Rock.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
@@ -314,7 +314,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/senseFoeAhead.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/turnLeft.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and foe.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
@@ -326,7 +326,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/senseFoeAhead.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/SingleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
@@ -338,7 +338,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/senseFoeHomeAhead.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/turnLeft.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and foe.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
@@ -350,7 +350,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/senseFriendAhead.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and friend.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
 		world.update();
@@ -363,7 +363,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/moveSenseFoeMarkerAhead.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/moveMark.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and foe.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		world.update();
 		world.update();
@@ -377,7 +377,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/moveSenseFoeWithFoodAhead.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/movePickUp.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and foe and food.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		world.update();
 		world.update();
 		world.update();
@@ -390,7 +390,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/moveSenseFriendWithFoodAhead.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and friend and food.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		world.update();	//1st ant moves 2nd blocked
 		world.update(); //2nd ant moves 1st
 		world.update();
@@ -405,7 +405,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/movePickupMoveDrop.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and food.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getDirection() == 0);
 		world.update();	//move
@@ -433,7 +433,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/flip.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		//random sequence 0,0,1,0,0,1
 		
 		assertTrue(((ClearCell)world.getWorld()[5][4]).getAnt().getState() == 0);
@@ -458,7 +458,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/moveMark.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		world.update();
 		assertTrue(world.getCells()[6][4].isOccupied());
 		world.update();
@@ -470,7 +470,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/moveMarkUnmark.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		world.update();
 		assertTrue(world.getCells()[6][4].isOccupied());
 		world.update();
@@ -484,7 +484,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/moveMarkSense.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/singleAnt.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		world.update();
 		assertTrue(world.getCells()[6][4].isOccupied());
 		world.update();
@@ -498,7 +498,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/move.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/TurnRight.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and foe.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		world.update();
 		//System.out.println(world);
 		assertTrue(((ClearCell)world.getCells()[5][4]).getAnt().getState() == 0);
@@ -510,7 +510,7 @@ public class BrainCommandTests {
 		AntBrain redBrain = AntBrainLoader.load("singleCommandBrain/move.brain");
 		AntBrain blackBrain = AntBrainLoader.load("singleCommandBrain/no.brain");
 		Cell[][] cells = SimpleWorldLoader.load("working worlds/ant and friend.world");
-		AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+		AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 		world.update();
 		//System.out.println(world);
 		assertTrue(((ClearCell)world.getCells()[5][4]).getAnt().getState() == 0);

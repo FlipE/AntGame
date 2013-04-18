@@ -123,4 +123,36 @@ public class Match {
 	public int getRoundNum() {
 		return this.world.getRoundNum();
 	}
+	
+	/**
+	 * return the current red score
+	 * @return the current red score
+	 */
+	public int getRedScore() {
+		return this.world.getRedScore();
+	}
+	
+	/**
+	 * return the current black score
+	 * @return the current black score
+	 */
+	public int getBlackScore() {
+		return this.world.getBlackScore();
+	}
+	
+	/**
+	 * Return the red player's name
+	 * @return the red player's name
+	 */
+	public String getRedPlayerName() {
+		return this.redPlayer.getName();
+	}
+	
+	/**
+	 * Return the black player's name
+	 * @return the black player's name
+	 */
+	public String getBlackPlayerName() {
+		return this.blackPlayer.getName();
+	}
 }

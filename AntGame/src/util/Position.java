@@ -6,7 +6,6 @@ package util;
 /**
  * Position.java
  *
- * @author 	Chris B
  * @date	22 Mar 2013
  * @version	1.0
  */
@@ -47,7 +46,7 @@ public class Position {
 	}
 	
 	/**
-	 * @return the x
+	 * @return x
 	 */
 	public int getX() {
 		return x;
@@ -74,6 +73,11 @@ public class Position {
 		this.y = y;
 	}
 	
+	/**
+	 * Set x and y to the x and y values of the given position
+	 * 
+	 * @param p the position which contains the new x and y values
+	 */
 	public void set(Position p) {
 		this.x = p.getX();
 		this.y = p.getY();
@@ -90,17 +94,25 @@ public class Position {
 		}	
 	}
 	
-	public void add(int x, int y) {
-		this.x += x;
-		this.y += y;
+	/**
+	 * Add the given dx and dy values to x and y respectively
+	 * 
+	 * @param dx the amount to add to x
+	 * @param dy the amount to add to y
+	 */
+	public void add(int dx, int dy) {
+		this.x += dx;
+		this.y += dy;
 	}
 	
 	/**
 	 * Given a direction, calculates the position 1 move in that direction.
-	 * The new position is returned.
+	 * The new position is returned. Due to the nature of the hexagonal grid
+	 * different positions are returned based on if the current y value is 
+	 * odd or even.
 	 * 
-	 * @param direction
-	 * @return
+	 * @param direction the direction 
+	 * @return the new position
 	 */
 	public Position getPositionInDirection(int direction) {
 		//  4 5

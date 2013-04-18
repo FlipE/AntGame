@@ -9,7 +9,6 @@ import exceptions.ReceiverNotSetException;
 /**
  * Ant.java
  *
- * @author 	Chris B
  * @date	17 Mar 2013
  * @version	1.0
  */

@@ -7,7 +7,7 @@ public class Config {
 	public static final int BLACK_ANT = 1;
 
 	// the number of rounds per match
-	public static final int NUM_ROUNDS_PER_MATCH = 300000;
+	public static final int NUM_ROUNDS_PER_MATCH = 3000;
 	
 	// number of rounds an ant rests after moving
 	public static final int MOVEMENT_RESTING_PERIOD = 14;

@@ -66,7 +66,7 @@ public class MatchManager {
 			for(int i = 0; i < players.size - 1; i += 1) {
 				for(int j = i + 1; j < players.size; j += 1) {
 					// round 1
-					AntWorld world1 = new AntWorld(worldInfo.getWorld(), players.get(i).getBrain(), players.get(j).getBrain());
+					AntWorld world1 = new AntWorld(worldInfo.getWorld(), players.get(i).getBrain(), players.get(j).getBrain(), worldInfo.getSeed());
 					Match round1 = new Match(world1, players.get(i), players.get(j), "Round 1");
 					
 					// round 2
@@ -99,25 +99,21 @@ public class MatchManager {
 	}
 
 	/**
-	 * @return
-	 */
-	public Array<Match> getMatches() {
-		return this.matchQueue;
-	}
-
-	/**
-	 * @return
+	 * check to see if there is another match in the queue
+	 * 
+	 * @return true if there is another match, false otherwise
 	 */
 	public boolean hasNext() {
-		return this.matchIndex < (this.matchQueue.size - 1);
+		return this.matchIndex < (this.matchQueue.size);
 	}
 
 	/**
-	 * @return
+	 * the next match if there is one. use hasNext to check
+	 * 
+	 * @return the next match if one exists
 	 */
 	public Match next() {
-		this.matchIndex += 1;
-		return this.matchQueue.get(this.matchIndex);
+		return this.matchQueue.get(this.matchIndex++);
 	}
 
 	/**

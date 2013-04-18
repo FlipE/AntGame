@@ -34,7 +34,7 @@ public class ExampleTest {
 			AntBrain blackBrain = AntBrainLoader.load("sample.brain");
 		
 			Cell[][] cells = SimpleWorldLoader.load("tiny1.world");
-			AntWorld world = new AntWorld(cells, redBrain, blackBrain);
+			AntWorld world = new AntWorld(cells, redBrain, blackBrain, 12345);
 			
 			StringBuffer log = new StringBuffer();
 			
